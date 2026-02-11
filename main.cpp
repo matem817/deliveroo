@@ -12,6 +12,7 @@ bho
 POSIZIONI:
 -1=esci da programa
 0=menu principale
+1=menu dati personali dell'utente
 */
 #include<iostream>
 #include<cstdlib>
@@ -21,10 +22,13 @@ using namespace std;
 int main(){
     //variabili di sistema (gestiscono il programma)
     bool esci=false, chiediSel=false, messagiDEBUG=true;
-    int posizioniValide[]={-1,0},  lungPosizioniValide=2;//<----------- inserite qui i nuovi id -Cris
+    int posizioniValide[]={-1,0, 1},  lungPosizioniValide=3;//<----------- inserite qui i nuovi id -Cris
     int posizioneUtente=0;
+    int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
 
     //variabili di dati utente(immagazzinano info sull'utente)
+    char nome[15];
+
 
     //APP
     while(!esci){
@@ -60,7 +64,42 @@ int main(){
                 cout<<"#####################################################"<<endl;
                 cout<<"Benvenuti su deliveroo"<<endl;
                 cout<<"Digita 0 per vedere questa schermata"<<endl;
+                cout<<"Digita 1 per accedere al menu delle impostazioni"<<endl;
                 cout<<"Digita -1 per uscire dal programma"<<endl;
+                break;
+
+            case 1: //menu dati personali utente
+                cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl;
+                cout<<"Scegli cosa fare tra le opzioni qua sotto: "<<endl;
+                cout<<"1 - Inserisci il nome da visualizzare quando esegui degli ordini."<<endl;
+                cout<<"2 - Inserisci un metodo di pagamento predefinito"<<endl;
+                cout<<"0 - Torna al menu principale. ";
+                cout<<endl<<"=> ";
+                cin>>sceltaMenuImpostazioni;
+
+                switch(sceltaMenuImpostazioni){
+                    case 1:
+                        cout<<"Inserisci il tuo nome (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
+                        for(int i=0; i<15; i++){
+                            cin>>nome[i];
+                            if(nome[i]=='0') break;
+                        }
+                        
+                        if(messagiDEBUG){
+                            cout<<endl;
+                            for(int i=0; i<15; i++){
+                                if(nome[i]=='0') break;
+                                cout<<nome[i];
+                            }
+                            cout<<endl;
+                        }
+                        break;
+                    
+                    case 0:
+                        posizioneUtente=0;
+                        break;
+                }
+
                 break;
 
     
