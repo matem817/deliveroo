@@ -26,6 +26,7 @@ int main(){
     bool esci=false, messaggiDEBUG=true;
     int posizioneUtente=0;
     int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
+    int codiceRistorante=0;
 
     //variabili di dati utente(immagazzinano info sull'utente)
     	//menu nome
@@ -43,21 +44,22 @@ int main(){
     while(!esci){
 		
 		menuPrincipale:
-		cout<<"#####################################################"<<endl;
-		cout<<"||@@@@  @@@@@ @     @ @   @ @@@@@ @@@@   @@@   @@@ ||"<<endl;
-		cout<<"||@   @ @     @     @ @   @ @     @   @ @   @ @   @||"<<endl;
-		cout<<"||@   @ @@@@@ @     @ @   @ @@@@@ @@@@  @   @ @   @||"<<endl;
-		cout<<"||@   @ @     @     @  @ @  @     @ @   @   @ @   @||"<<endl;
-		cout<<"||@@@@  @@@@@ @@@@@ @   @   @@@@@ @  @   @@@   @@@ ||"<<endl;
-		cout<<"#####################################################"<<endl;
-		cout<<"Benvenuti su deliveroo"<<endl;
-		cout<<"Digita 1 per accedere al menu delle impostazioni"<<endl;
-		cout<<"Digita 0 per uscire dal programma"<<endl;
+		cout<<"#####################################################"   <<endl
+		    <<"||@@@@  @@@@@ @     @ @   @ @@@@@ @@@@   @@@   @@@ ||"   <<endl
+		    <<"||@   @ @     @     @ @   @ @     @   @ @   @ @   @||"   <<endl
+		    <<"||@   @ @@@@@ @     @ @   @ @@@@@ @@@@  @   @ @   @||"   <<endl
+		    <<"||@   @ @     @     @  @ @  @     @ @   @   @ @   @||"   <<endl
+		    <<"||@@@@  @@@@@ @@@@@ @   @   @@@@@ @  @   @@@   @@@ ||"   <<endl
+		    <<"#####################################################"   <<endl
+		    <<"Benvenuti su deliveroo"                                  <<endl
+            <<"Digita 1 per accedere alla mappa ristoranti"             <<endl
+		    <<"Digita 2 per accedere al menu delle impostazioni"        <<endl
+		    <<"Digita 0 per uscire dal programma"                       <<endl;
 
 		chiediInput:
 			cout<<"=>";
 			cin>>posizioneUtente;
-			if(posizioneUtente<0||posizioneUtente>1) {
+			if(posizioneUtente<0||posizioneUtente>2) {
 				cout<<"Selezione non valida riprovare\n";
 				goto chiediInput;
 			}
@@ -68,7 +70,54 @@ int main(){
                 cout<<"Grazie per aver usato deliveroo!!!\n";
                 if(messaggiDEBUG) cout<<"DEBUG:uscita del programma\n";
                 break;
-            case 1: //menu dati personali utente
+            case 1:
+                mappaRistoranti:
+                cout<<"|  |Via Torvalds                |  |    #@#  CODICE\t-\tNEGOZI"<<endl
+                    <<"|  |*    *            **********|  |    #@#  ----------------------------------------"<<endl
+                    <<"|  |* 06 *            *        *|  |    #@#  1\t\t-\tMcDonalds"<<endl
+                    <<"|  |******            *     05 *|  |    #@#  ----------------------------------------"<<endl
+                    <<"|  |******            *        *|  |    #@#  2\t\t-\tSuper Kebab"<<endl
+                    <<"|  |*    *            **********|  |    #@#  ----------------------------------------"<<endl
+                    <<"|  |*    *                 *****|  |    #@#  3\t\t-\tSushi Zen"<<endl
+                    <<"|  |******                 *   *|  |    #@#  ----------------------------------------"<<endl
+                    <<"|  |******                 * 04*|  |    #@#  "<<endl
+                    <<"|  |* 07 *                 *   *|  |    #@#  ----------------------------------------"<<endl
+                    <<"|  |*    *                 *****|  |    #@#  "<<endl
+                    <<"|  |******  ********** *********|  |    #@#  ----------------------------------------"<<endl
+                    <<"|  |******  *        * *     03*|  |    #@#  "<<endl
+                    <<"|  |*    *  *        * *********|  |    #@#  ----------------------------------------"<<endl
+                    <<"|  |*    *  *        *          |  |    #@#  "<<endl
+                    <<"|  |******  *        *  ********|  |    #@#  "<<endl
+                    <<"|  |******* *        *  *      *|  |    #@#  "<<endl
+                    <<"|  |*     * *   01   *  *   02 *|  |    #@#  "<<endl
+                    <<"|  |*     * *        *  *      *|  |    #@#  "<<endl
+                    <<"|  |******* **********  ********|  |    #@#  "<<endl
+                    <<"|  |____________________________/  |    #@#  "<<endl
+                    <<"|  |______________________________/     #@#  "<<endl
+                    <<"|  |Via Bjarne *****************        #@#  "<<endl;
+                cout<<"Selezionare il ristorante da cui ordinare.(inserire 0 per tornara al menu' principale)"<<endl;
+                    chiediInputRistorante:
+			        cout<<"=>";
+			        cin>>codiceRistorante;
+                    if(codiceRistorante<0||codiceRistorante>7) {
+                        cout<<"Selezione non valida riprovare\n";
+                        goto chiediInputRistorante;
+                    }
+                    switch(codiceRistorante){
+                        case 0:
+                            goto menuPrincipale;
+                        case 1:
+                            cout<<"Hai selezionato come ristorante McDonald, cosa vuoi ordinare dal suo menù?"<<endl;
+                            break;
+                        case 2:
+                            cout<<"Hai selezionato come ristorante Super Kebab, cosa vuoi ordinare dal suo menù?"<<endl;
+                            break;
+                        case 3:
+                            cout<<"Hai selezionato come ristorante Sushi Zen, cosa vuoi ordinare dal suo menù?"<<endl;
+                            break;
+                    }
+                break;
+            case 2: //menu dati personali utente
                 menuDatiPersonali:
 				cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl
                 	<<"Scegli cosa fare tra le opzioni qua sotto: "<<endl
@@ -193,7 +242,7 @@ int main(){
 										break;
 									case 3: //gold card
 										cout<<"Hai inserito il metodo di pagamento tramite Gold Card. Mangi gratis!"<<endl
-											<<"(Il governo non vuole che tu sappia questo trucco #adv)"<<endl;	
+											<<"(Il governo non vuole che tu sappia questo trucco #adv)"<<endl;
 										break;		
 								}
 								goto menuPagamentoPreferito;
