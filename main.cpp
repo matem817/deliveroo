@@ -23,7 +23,7 @@ using namespace std;
 
 int main(){
     //variabili di sistema (gestiscono il programma)
-    bool esci=false, chiediSel=true, messaggiDEBUG=true;
+    bool esci=false, messaggiDEBUG=true;
     int posizioneUtente=0;
     int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
 
@@ -155,7 +155,6 @@ int main(){
 								}while(metodoPagamentoPreferito>3 or metodoPagamentoPreferito<0);
 								
 								switch(metodoPagamentoPreferito){
-									selezioneMetodoPagamento:
 									case 0: //contanti
 										cout<<"Hai selezionato il pagamento con contanti."<<endl;
 										break;
