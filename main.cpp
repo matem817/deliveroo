@@ -81,12 +81,12 @@ int main(){
 
             case 1: //menu dati personali utente
                 menuDatiPersonali:
-				cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl;
-                cout<<"Scegli cosa fare tra le opzioni qua sotto: "<<endl;
-                cout<<"1 - Inserisci il nome da visualizzare quando esegui degli ordini."<<endl;
-                cout<<"2 - Inserisci un metodo di pagamento predefinito"<<endl;
-                cout<<"0 - Torna al menu principale. ";
-                cout<<endl<<"=> ";
+				cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl
+                	<<"Scegli cosa fare tra le opzioni qua sotto: "<<endl
+                	<<"1 - Inserisci il nome da visualizzare quando esegui degli ordini."<<endl
+                	<<"2 - Inserisci un metodo di pagamento predefinito"<<endl
+                	<<"0 - Torna al menu principale. "<<endl
+                	<<"=> ";
                 cin>>sceltaMenuImpostazioni;
 
                 switch(sceltaMenuImpostazioni){
@@ -125,7 +125,8 @@ int main(){
 										if(cognomeCarta[i]=='0') break;
 										cout<<cognomeCarta[i];
 									}
-								cout<<endl<<"	Ultime 4 cifre della carta: ";
+								cout<<endl
+									<<"	Ultime 4 cifre della carta: ";
 									for(int i=12; i<16; i++){									
 										cout<<cartaCredito[i];
 									}
@@ -145,8 +146,10 @@ int main(){
 							default:
 								if(messaggiDEBUG) cout<<"DEBUG: Errore nella variabile metodoPagamentoPreferito."<<endl;
 						}
-						cout<<endl<<"Scegli cosa vuoi fare: "<<endl
-							<<"1 - Imposta metodo di pagamento preferito."<<endl<<"0 - Torna al menu delle impostazioni."
+						cout<<endl
+							<<"Scegli cosa vuoi fare: "<<endl
+							<<"1 - Imposta metodo di pagamento preferito."<<endl
+							<<"0 - Torna al menu delle impostazioni."<<endl
 							<<"=> ";
 						cin>>sceltaMenuPagamento;
 						
@@ -200,7 +203,7 @@ int main(){
 										}
 										goto menuPagamentoPreferito;
 									case 3: //gold card
-										cout<<"Hai inserito il metodo di pagamento tramite Gold Card. Mangi gratis!";
+										cout<<"Hai inserito il metodo di pagamento tramite Gold Card. Mangi gratis!"<<endl;
 										goto menuPagamentoPreferito;			
 								}
 							case 0:
