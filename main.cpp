@@ -29,7 +29,7 @@ int main(){
 
     //variabili di dati utente(immagazzinano info sull'utente)
     	//menu nome
-			char nome[15];
+			char nome[30];
     	//menu metodoPagamento
 			int metodoPagamentoPreferito=0; //0: Contanti, 1: Carta di credito, 2: Paypal, 3: mangi gratis
 			int sceltaMenuPagamento;
@@ -81,13 +81,13 @@ int main(){
                 switch(sceltaMenuImpostazioni){ //MENU IMPOSTAZIONI
                     case 1://Inserimento nome utente
                         cout<<"Inserisci il tuo nome (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
-                        for(int i=0; i<15; i++){
+                        for(int i=0; i<30; i++){
                             cin>>nome[i];
                             if(nome[i]=='0') break;
                         }
 						cout<<endl
 							<<"Il nome inserito è:";
-						for(int i=0; i<15; i++){
+						for(int i=0; i<30; i++){
 							if(nome[i]=='0') break;
 							cout<<nome[i];
 						}
