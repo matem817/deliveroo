@@ -89,27 +89,26 @@ int main(){
                 	<<"=> ";
                 cin>>sceltaMenuImpostazioni;
 
-                switch(sceltaMenuImpostazioni){
+                switch(sceltaMenuImpostazioni){ //MENU IMPOSTAZIONI
                     case 1://Inserimento nome utente
                         cout<<"Inserisci il tuo nome (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
                         for(int i=0; i<15; i++){
                             cin>>nome[i];
                             if(nome[i]=='0') break;
                         }
-                        
-                        if(messaggiDEBUG){
-                            cout<<endl;
-                            for(int i=0; i<15; i++){
-                                if(nome[i]=='0') break;
-                                cout<<nome[i];
-                            }
-                            cout<<endl;
-                        }
+						cout<<endl
+							<<"Il nome inserito è:";
+						for(int i=0; i<15; i++){
+							if(nome[i]=='0') break;
+							cout<<nome[i];
+						}
+						cout<<"."<<endl;
+						goto menuDatiPersonali;
                         break;
                     case 2://metodo di pagamento preferito
                     	menuPagamentoPreferito:
 						cout<<"Metodo di pagamento attuale: ";
-                    	switch(metodoPagamentoPreferito){
+                    	switch(metodoPagamentoPreferito){ //output metodo di pagamento preferito
                     		case 0:
                     			cout<<"contanti."<<endl;
                     			break;
@@ -144,6 +143,7 @@ int main(){
 								cout<<"gold card (mangi gratis).";
 								break;
 							default:
+								cout<<endl;
 								if(messaggiDEBUG) cout<<"DEBUG: Errore nella variabile metodoPagamentoPreferito."<<endl;
 						}
 						cout<<endl
@@ -153,7 +153,7 @@ int main(){
 							<<"=> ";
 						cin>>sceltaMenuPagamento;
 						
-						switch(sceltaMenuPagamento){
+						switch(sceltaMenuPagamento){//Menu metodi di pagamento
 							case 1:
 								do{
 									cout<<"Metodi di pagamento accettati: "<<endl
@@ -169,7 +169,7 @@ int main(){
 									selezioneMetodoPagamento:
 									case 0: //contanti
 										cout<<"Hai selezionato il pagamento con contanti."<<endl;
-										goto menuPagamentoPreferito;
+										
 									case 1: //carta di credito
 										cout<<"Hai selezionato il pagamento tramite carta di credito."<<endl
 											<<"Inserisci il numero di carta (numero per numero, premi invio per ogni numero): "<<endl;
@@ -193,7 +193,6 @@ int main(){
 				                            cin>>cognomeCarta[i];
 				                            if(cognomeCarta[i]=='0') break;
 				                        }
-										goto menuPagamentoPreferito;
 									case 2: //paypal
 										cout<<"Hai selezionato il pagamento tramite PayPal"<<endl
 											<<"Inserisci il tuo nome utente: (premi invio ad ogni lettera, inserisci 0 quando hai concluso)";
@@ -201,22 +200,18 @@ int main(){
 											cin>>utentePaypal[i];
 											if(utentePaypal[i] == '0') break;
 										}
-										goto menuPagamentoPreferito;
 									case 3: //gold card
-										cout<<"Hai inserito il metodo di pagamento tramite Gold Card. Mangi gratis!"<<endl;
-										goto menuPagamentoPreferito;			
+										cout<<"Hai inserito il metodo di pagamento tramite Gold Card. Mangi gratis!"<<endl
+											<<"(Il governo non vuole che tu sappia questo trucco #adv)"<<endl;			
 								}
+								goto menuPagamentoPreferito;
 							case 0:
 								goto menuDatiPersonali;
 						}
-						
-						
-						
                     case 0:
                         goto menuPrincipale;
                         break;
                 }
-
                 break;
 
     
