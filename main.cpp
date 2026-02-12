@@ -5,9 +5,13 @@ Se create un nuovo menù ricordatevi di aggiungere il suo id in posizioni valide
 e un case dentro lo swirch E, di incrementare lungPosizioniValide
 ~Cris
 TODO:
+	aggiungere l'if sul controllo della doppia cifra della carta di credito
+	fixare menu carta
+	fixare TUTTI I MENU dove manca il cout
 
 COMMENTI:
 bho
+che codice di merda :D
 
 POSIZIONI:
 -1=esci da programa
@@ -21,13 +25,20 @@ using namespace std;
 
 int main(){
     //variabili di sistema (gestiscono il programma)
-    bool esci=false, chiediSel=false, messagiDEBUG=true;
+    bool esci=false, chiediSel=false, messaggiDEBUG=true;
     int posizioniValide[]={-1,0, 1},  lungPosizioniValide=3;//<----------- inserite qui i nuovi id -Cris
     int posizioneUtente=0;
     int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
 
     //variabili di dati utente(immagazzinano info sull'utente)
-    char nome[15];
+    	//menu nome
+			char nome[15];
+    	//menu metodoPagamento
+			int metodoPagamentoPreferito=0; //0: Contanti, 1: Carta di credito, 2: Paypal, 3: mangi gratis
+			int sceltaMenuPagamento;
+			int cartaCredito[16], cvv;
+			char nomeCarta[15], cognomeCarta[15];
+    
 
 
     //APP
@@ -50,12 +61,13 @@ int main(){
             case -1:
                 esci=true;
                 cout<<"Grazie per aver usato deliveroo!!!\n";
-                if(messagiDEBUG) cout<<"DEBUG:uscita del programma\n";
+                if(messaggiDEBUG) cout<<"DEBUG:uscita del programma\n";
                 break;
 
                 
             case 0://menu principale
-                cout<<"#####################################################"<<endl;
+                menuPrincipale:
+				cout<<"#####################################################"<<endl;
                 cout<<"||@@@@  @@@@@ @     @ @   @ @@@@@ @@@@   @@@   @@@ ||"<<endl;
                 cout<<"||@   @ @     @     @ @   @ @     @   @ @   @ @   @||"<<endl;
                 cout<<"||@   @ @@@@@ @     @ @   @ @@@@@ @@@@  @   @ @   @||"<<endl;
@@ -69,7 +81,8 @@ int main(){
                 break;
 
             case 1: //menu dati personali utente
-                cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl;
+                menuDatiPersonali:
+				cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl;
                 cout<<"Scegli cosa fare tra le opzioni qua sotto: "<<endl;
                 cout<<"1 - Inserisci il nome da visualizzare quando esegui degli ordini."<<endl;
                 cout<<"2 - Inserisci un metodo di pagamento predefinito"<<endl;
@@ -78,14 +91,14 @@ int main(){
                 cin>>sceltaMenuImpostazioni;
 
                 switch(sceltaMenuImpostazioni){
-                    case 1:
+                    case 1://Inserimento nome utente
                         cout<<"Inserisci il tuo nome (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
                         for(int i=0; i<15; i++){
                             cin>>nome[i];
                             if(nome[i]=='0') break;
                         }
                         
-                        if(messagiDEBUG){
+                        if(messaggiDEBUG){
                             cout<<endl;
                             for(int i=0; i<15; i++){
                                 if(nome[i]=='0') break;
@@ -94,9 +107,90 @@ int main(){
                             cout<<endl;
                         }
                         break;
-                    
+                    case 2://metodo di pagamento preferito
+                    	menuPagamentoPreferito:
+						cout<<"Metodo di pagamento attuale: ";
+                    	switch(metodoPagamentoPreferito){
+                    		case 0:
+                    			cout<<"contanti."<<endl;
+                    			break;
+                    		case 1:
+                    			cout<<"carta di credito."<<endl
+                    				<<"	Nome e Cognome sulla carta: ";
+                    				for(int i=0; i<15; i++){
+                    					if(nomeCarta[i]=='0') break;
+										cout<<nomeCarta[i];
+									}
+								cout<<" ";
+									for(int i=0; i<15; i++){
+										if(cognomeCarta[i]=='0') break;
+										cout<<cognomeCarta[i];
+									}
+								cout<<endl<<"Ultime 4 cifre della carta: ";
+									for(int i=12; i<16; i++){									
+										cout<<cartaCredito[i];
+									}
+								cout<<endl;
+								break;
+							case 2:
+								cout<<"Paypal";
+								break;
+							case 3:
+								cout<<"gold card (mangi gratis)";
+								break;
+							default:
+								if(messaggiDEBUG) cout<<"DEBUG: Errore nella variabile metodoPagamentoPreferito."<<endl;
+						}
+						cout<<endl<<"Scegli cosa vuoi fare: "<<endl
+							<<"1 - Imposta metodo di pagamento preferito."<<endl<<"0 - Torna al menu delle impostazioni."
+							<<"=> ";
+						cin>>sceltaMenuPagamento;
+						
+						switch(sceltaMenuPagamento){
+							case 1:
+								do{
+								cout<<"Metodi di pagamento accettati: "<<endl
+									<<"0 - Contanti"
+									<<"1 - Carta di Credito"
+									<<"2 - Paypal"
+									//<<"3 - Gold Card (mangi gratis)
+									<<endl<<"=> ";
+								cin>>metodoPagamentoPreferito;
+								}while(metodoPagamentoPreferito>3 or metodoPagamentoPreferito<0);
+								
+								switch(metodoPagamentoPreferito){
+									case 0: //contanti
+										cout<<"Hai selezionato il pagamento con contanti."<<endl;
+										goto menuPagamentoPreferito;
+									case 1: //carta di credito
+										cout<<"Hai selezionato il pagamento tramite carta di credito."<<endl
+											<<"Inserisci il numero di carta (numero per numero, premi invio per ogni numero): ";
+										for (int i=0; i<16; i++){
+											cin>>cartaCredito[i];
+										}
+										cout<<"Inserisci il CVV: ";
+										cin>>cvv;
+				                        
+										cout<<"Inserisci il nome sulla carta (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
+				                        for(int i=0; i<15; i++){
+				                            cin>>nomeCarta[i];
+				                            if(nomeCarta[i]=='0') break;
+				                        }
+				                        cout<<"Inserisci il cognome sulla carta (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
+				                        for(int i=0; i<15; i++){
+				                            cin>>cognomeCarta[i];
+				                            if(cognomeCarta[i]=='0') break;
+				                        }
+										goto menuPagamentoPreferito;					
+								}
+							case 0:
+								goto menuDatiPersonali;
+						}
+						
+						
+						
                     case 0:
-                        posizioneUtente=0;
+                        goto menuPrincipale;
                         break;
                 }
 
@@ -111,7 +205,7 @@ int main(){
                 esci=true;
 
         }
-        if(messagiDEBUG) cout<<"DEBUG:Eseguito un ciclo\n";
+        if(messaggiDEBUG) cout<<"DEBUG:Eseguito un ciclo\n";
         
     }
 }
