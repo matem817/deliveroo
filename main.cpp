@@ -158,6 +158,7 @@ int main(){
 									selezioneMetodoPagamento:
 									case 0: //contanti
 										cout<<"Hai selezionato il pagamento con contanti."<<endl;
+										break;
 										
 									case 1: //carta di credito
 										cout<<"Hai selezionato il pagamento tramite carta di credito."<<endl
@@ -182,6 +183,7 @@ int main(){
 				                            cin>>cognomeCarta[i];
 				                            if(cognomeCarta[i]=='0') break;
 				                        }
+										break;
 									case 2: //paypal
 										cout<<"Hai selezionato il pagamento tramite PayPal"<<endl
 											<<"Inserisci il tuo nome utente: (premi invio ad ogni lettera, inserisci 0 quando hai concluso)";
@@ -189,9 +191,11 @@ int main(){
 											cin>>utentePaypal[i];
 											if(utentePaypal[i] == '0') break;
 										}
+										break;
 									case 3: //gold card
 										cout<<"Hai inserito il metodo di pagamento tramite Gold Card. Mangi gratis!"<<endl
-											<<"(Il governo non vuole che tu sappia questo trucco #adv)"<<endl;			
+											<<"(Il governo non vuole che tu sappia questo trucco #adv)"<<endl;	
+										break;		
 								}
 								goto menuPagamentoPreferito;
 							case 0:
