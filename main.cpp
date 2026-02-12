@@ -23,8 +23,7 @@ using namespace std;
 
 int main(){
     //variabili di sistema (gestiscono il programma)
-    bool esci=false, chiediSel=false, messaggiDEBUG=true;
-    int posizioniValide[]={-1,0, 1},  lungPosizioniValide=3;//<----------- inserite qui i nuovi id -Cris
+    bool esci=false, chiediSel=true, messaggiDEBUG=true;
     int posizioneUtente=0;
     int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
 
@@ -42,43 +41,33 @@ int main(){
 
     //APP
     while(!esci){
-        while(chiediSel){
-            chiediSel=true;
-            cout<<"=>";
-            cin>>posizioneUtente;
-            for(int i=0; i<lungPosizioniValide; i++){
-                if(posizioneUtente==posizioniValide[i]) {
-                    chiediSel=false;
-                    break;
-                }
-            }
-            if(chiediSel) cout<<"Selezione non valida riprovare\n";
-        }
-        chiediSel=true;
+		
+		menuPrincipale:
+		cout<<"#####################################################"<<endl;
+		cout<<"||@@@@  @@@@@ @     @ @   @ @@@@@ @@@@   @@@   @@@ ||"<<endl;
+		cout<<"||@   @ @     @     @ @   @ @     @   @ @   @ @   @||"<<endl;
+		cout<<"||@   @ @@@@@ @     @ @   @ @@@@@ @@@@  @   @ @   @||"<<endl;
+		cout<<"||@   @ @     @     @  @ @  @     @ @   @   @ @   @||"<<endl;
+		cout<<"||@@@@  @@@@@ @@@@@ @   @   @@@@@ @  @   @@@   @@@ ||"<<endl;
+		cout<<"#####################################################"<<endl;
+		cout<<"Benvenuti su deliveroo"<<endl;
+		cout<<"Digita 1 per accedere al menu delle impostazioni"<<endl;
+		cout<<"Digita 0 per uscire dal programma"<<endl;
+
+		chiediInput:
+			cout<<"=>";
+			cin>>posizioneUtente;
+			if(posizioneUtente<0||posizioneUtente>1) {
+				cout<<"Selezione non valida riprovare\n";
+				goto chiediInput;
+			}
 
         switch (posizioneUtente){
-            case -1:
+			case 0:
                 esci=true;
                 cout<<"Grazie per aver usato deliveroo!!!\n";
                 if(messaggiDEBUG) cout<<"DEBUG:uscita del programma\n";
                 break;
-
-                
-            case 0://menu principale
-                menuPrincipale:
-				cout<<"#####################################################"<<endl;
-                cout<<"||@@@@  @@@@@ @     @ @   @ @@@@@ @@@@   @@@   @@@ ||"<<endl;
-                cout<<"||@   @ @     @     @ @   @ @     @   @ @   @ @   @||"<<endl;
-                cout<<"||@   @ @@@@@ @     @ @   @ @@@@@ @@@@  @   @ @   @||"<<endl;
-                cout<<"||@   @ @     @     @  @ @  @     @ @   @   @ @   @||"<<endl;
-                cout<<"||@@@@  @@@@@ @@@@@ @   @   @@@@@ @  @   @@@   @@@ ||"<<endl;
-                cout<<"#####################################################"<<endl;
-                cout<<"Benvenuti su deliveroo"<<endl;
-                cout<<"Digita 0 per vedere questa schermata"<<endl;
-                cout<<"Digita 1 per accedere al menu delle impostazioni"<<endl;
-                cout<<"Digita -1 per uscire dal programma"<<endl;
-                break;
-
             case 1: //menu dati personali utente
                 menuDatiPersonali:
 				cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl
