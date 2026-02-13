@@ -31,7 +31,7 @@ int main(){
     	int codiceRistorante=0;
 		int piattoScelto;
 
-	//Dati Ristoranti
+	//Dati Ristoranti (vedi Docs.txt #1)
 		int dimPartizione=38;
 		char piattiMC[]={
 			'1',')','M','c','M','e','n','u',' ','G','r','a','n',' ','C','r','i','s','p','y',' ','M','c','B','a','c','o','n',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
