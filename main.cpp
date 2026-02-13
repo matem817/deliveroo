@@ -17,11 +17,12 @@ TODO:
 	
 COMPITI ATTUALI:
 	CRISTIAN: Abbellimento menù dei singoli ristoranti con aggiunta di annesse funzioni.
-	MATTIA:
+	MATTIA: menu carrello
 	ANDREA:
 COMMENTI:
-bho
-che codice di merda :D
+	bho
+	che codice di merda :D
+	per dio testate il codice prima di fare commit
 */
 #include<iostream>
 #include<cstdlib>
@@ -72,6 +73,8 @@ int main(){
 		//ordini
 			int carrello[15], ultimaPosOccupataCarrello=0;
 
+	//menu carrello
+		int totale, importo, resto=totale-importo;
 
     //APP
     while(!esci){
@@ -287,6 +290,28 @@ int main(){
 								for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiMC[x];
 								cout<<endl;
 							}
+						}
+
+						cout<<"Scegli una tra le seguenti opzioni: "<<endl
+							<<"1 - Ordina e paga"<<endl
+							<<"2 - Torna al menu dei ristoranti"<<endl
+							<<"3 - Torna al menu principale"<<endl
+							<<"=> ";
+						cin>>scelta;
+
+						switch(scelta){
+							case 1:
+								cout<<"Pagherai tramite: ";
+								switch(metodoPagamentoPreferito){
+									case 0:
+										cout<<"contanti. Inserisci l'importo che consegnerai al rider per il calcolo del resto: ";
+										cin>>importo;
+										if(importo==0) break;
+										cout<<"Riceverai "<<resto<<" euro di resto";
+										break;
+									case 1:
+										cout<<"carta. "<<endl<<"Verifica se le informazioni sono corrette: "<<endl;
+								}
 						}
 				
 					goto menuRistoranti;
