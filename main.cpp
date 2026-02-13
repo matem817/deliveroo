@@ -9,7 +9,7 @@ TODO:
 		visualizzazione prezzi per il singolo item
 		scelta metodo di pagamento (il primo è il predefinito [COME CAZZO FAREMO BHO])
 			se in contanti specificare al rider quanti soldi si daranno
-	SUICIDARSI
+	SUICIDARSI/kurt kobain pov
 	
 
 COMMENTI:
