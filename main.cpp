@@ -10,6 +10,10 @@ TODO:
 		scelta metodo di pagamento (il primo è il predefinito [COME CAZZO FAREMO BHO])
 			se in contanti specificare al rider quanti soldi si daranno
 	SUICIDARSI/kurt kobain pov
+	AGGIUNGERE nella visualizzazione del carrello le varie scelte
+		1) concludere l'ordine e pagare
+		2) tornare al menu dei ristoranti
+		3) tornare al menu principale
 	
 
 COMMENTI:
@@ -270,10 +274,8 @@ int main(){
 								cout<<endl;
 							}
 						}
-						cout<<"Premi un tasto per tornare ai ristoranti =>";
-						cin>>scelta;
-						goto menuRistoranti;
-						break;
+				
+					goto menuRistoranti;
 					
                 }
             	break;
@@ -302,7 +304,7 @@ int main(){
 
                 switch(sceltaMenuImpostazioni){ //MENU IMPOSTAZIONI
                     case 1://Inserimento nome utente
-                        cout<<"Inserisci il tuo nome (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
+                        cout<<"Inserisci il tuo nome (inserisci 0 e premi invio quando hai concluso): ";
                         for(int i=0; i<30; i++){
                             cin>>nome[i];
                             if(nome[i]=='0') break;
