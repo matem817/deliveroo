@@ -11,7 +11,10 @@ TODO:
 			se in contanti specificare al rider quanti soldi si daranno
 	SUICIDARSI/kurt kobain pov
 	
-
+COMPITI ATTUALI:
+	CRISTIAN: Abbellimento menù dei singoli ristoranti con aggiunta di annesse funzioni.
+	MATTIA:
+	ANDREA:
 COMMENTI:
 bho
 che codice di merda :D
@@ -44,12 +47,12 @@ int main(){
 			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 		};
 		char piattiSK[]={
-        '1',')','K','e','b','a','b',' ','C','o','m','p','l','e','t','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-        '2',')','P','i','a','d','i','n','a',' ','K','e','b','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-        '3',')','P','a','n','i','n','o',' ','F','a','l','a','f','e','l',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-        '4',')','V','a','s','c','h','e','t','t','a',' ','K','e','b','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-        '5',')','P','a','t','a','t','i','n','e',' ','F','r','i','t','t','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-        '6',')','B','i','b','i','t','a',' ','a',' ','s','c','e','l','t','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        	'1',')','K','e','b','a','b',' ','C','o','m','p','l','e','t','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        	'2',')','P','i','a','d','i','n','a',' ','K','e','b','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        	'3',')','P','a','n','i','n','o',' ','F','a','l','a','f','e','l',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+      	  	'4',')','V','a','s','c','h','e','t','t','a',' ','K','e','b','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+      	  	'5',')','P','a','t','a','t','i','n','e',' ','F','r','i','t','t','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+      	  	'6',')','B','i','b','i','t','a',' ','a',' ','s','c','e','l','t','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         };
         int quantitaPiatto;
 	
@@ -227,6 +230,17 @@ int main(){
 								<<"=>";
 							cin>>piattoScelto;
 						}
+						cout<<"Quante unita' di questo piatto vuoi ordinare? ";
+                        cin>>quantitaPiatto;
+
+                        for(int k=0; k<quantitaPiatto; k++){
+                            if(ultimaPosOccupataCarrello<15){
+                                carrello[ultimaPosOccupataCarrello++]=10+piattoScelto; 
+                            } else {
+                                cout<<"ATTENZIONE: Carrello pieno! Alcuni prodotti non sono stati aggiunti."<<endl;
+                                break; 
+                            }
+                        }
 						carrello[ultimaPosOccupataCarrello++]=40+piattoScelto;
 						cout<<endl;
 						piattoScelto--;//decremento perche le partizioni partono da 0 non da 1 :D 
