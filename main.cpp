@@ -136,14 +136,13 @@ int main(){
 					case 0:
 						goto menuPrincipale;
 					case 1:
-						case 1:
                         superKebab:
                         cout<<"################################################################################"<<endl
                             <<"#  ____  _   _ ____  _____ ____      _  _______ ____    _    ____              #"<<endl
-                            <<"# / ___|| | | |  _ \| ____|  _ \    | |/ / ____| __ )  / \  | __ )             #"<<endl
-                            <<"# \___ \| | | | |_) |  _| | |_) |   | ' <|  _| |  _ \ / _ \ |  _ \             #"<<endl
-                            <<"#  ___) | |_| |  __/| |___|  _ <    | . \| |___| |_) / ___ \| |_) |            #"<<endl
-                            <<"# |____/ \___/|_|   |_____|_| \_\   |_|\_\_____|____/_/   \_\____/             #"<<endl
+                            <<"# / ___|| | | |  _ \\| ____|  _ \\    | |/ / ____| __ )  / \\  | __ )             #"<<endl
+                            <<"# \\___ \\| | | | |_) |  _| | |_) |   | ' <|  _| |  _ \\ / _ \\ |  _ \\             #"<<endl
+                            <<"#  ___) | |_| |  __/| |___|  _ <    | . \\| |___| |_) / ___ \\| |_) |            #"<<endl
+                            <<"# |____/ \\___/|_|   |_____|_| \\_\\   |_|\\_\\_____|____/_/   \\_\\____/             #"<<endl
                             <<"#                                                                              #"<<endl
                             <<"# Consegna tra 15-30 minuti                                                    #"<<endl;
 
@@ -181,7 +180,7 @@ int main(){
                             }
                         }
                         cout<<endl<<"Piatto aggiunto al carrello."<<endl;
-                        cout<<"Vuoi ordinare qualcos'altro da Super Kebab? (s/n): ";
+                        cout<<"Vuoi ordinare qualcos'altro da Super Kebab? (s/N): ";
                         cin>>sceltaSN;
 
                         if(sceltaSN=='s' || sceltaSN=='S'){
@@ -253,31 +252,33 @@ int main(){
 								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
 							goto menuRistoranti;	
 						}
+					case 9: // SEZIONE CARRELLO 
+						cout<<"--- CARRELLO ATTUALE ---"<<endl;
+						if(ultimaPosOccupataCarrello==0) cout<<"Vuoto!"<<endl;
+						for(int i=0; i<ultimaPosOccupataCarrello; i++){
+							int id=carrello[i];
+							if(id>10 && id<20){ // Piatti Super Kebab (11-16)
+								int p=id-11;
+								cout<<"- ";
+								for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
+								cout<<endl;
+							}
+							if(id>40 && id<50){ // Piatti McDonalds (41-46)
+								int p=id-41;
+								cout<<"- ";
+								for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiMC[x];
+								cout<<endl;
+							}
+						}
+						cout<<"Premi un tasto per tornare ai ristoranti =>";
+						cin>>scelta;
+						goto menuRistoranti;
+						break;
+					
                 }
-                break;
-			case 9: // SEZIONE CARRELLO 
-                        cout<<"--- CARRELLO ATTUALE ---"<<endl;
-                        if(ultimaPosOccupataCarrello==0) cout<<"Vuoto!"<<endl;
-                        for(int i=0; i<ultimaPosOccupataCarrello; i++){
-                            int id=carrello[i];
-                            if(id>10 && id<20){ // Piatti Super Kebab (11-16)
-                                int p=id-11;
-                                cout<<"- ";
-                                for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
-                                cout<<endl;
-                            }
-                            if(id>40 && id<50){ // Piatti McDonalds (41-46)
-                                int p=id-41;
-                                cout<<"- ";
-                                for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiMC[x];
-                                cout<<endl;
-                            }
-                        }
-                        cout<<"Premi un tasto per tornare ai ristoranti =>";
-                        cin>>scelta;
-                        goto menuRistoranti;
-                        break;
-            }
+            	break;
+					
+			
 			/*	
 				###################################################################
 									MENU DATI PERSONALI UTENTE
