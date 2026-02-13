@@ -43,6 +43,15 @@ int main(){
 			'5',')','M','c','M','e','n','u',' ','D','o','u','b','l','e',' ','C','h','i','k','e','n',' ','B','B','Q',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 		};
+		char piattiSK[]={
+        '1',')','K','e','b','a','b',' ','C','o','m','p','l','e','t','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        '2',')','P','i','a','d','i','n','a',' ','K','e','b','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        '3',')','P','a','n','i','n','o',' ','F','a','l','a','f','e','l',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        '4',')','V','a','s','c','h','e','t','t','a',' ','K','e','b','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        '5',')','P','a','t','a','t','i','n','e',' ','F','r','i','t','t','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        '6',')','B','i','b','i','t','a',' ','a',' ','s','c','e','l','t','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        };
+        int quantitaPiatto;
 	
     //variabili di dati utente(immagazzinano info sull'utente)
     	//menu nome
@@ -127,8 +136,60 @@ int main(){
 					case 0:
 						goto menuPrincipale;
 					case 1:
-						cout<<"Hai selezionato come ristorante Super Kebab, cosa vuoi ordinare dal suo menù?"<<endl;
-					break;
+						case 1:
+                        superKebab:
+                        cout<<"################################################################################"<<endl
+                            <<"#  ____  _   _ ____  _____ ____      _  _______ ____    _    ____              #"<<endl
+                            <<"# / ___|| | | |  _ \| ____|  _ \    | |/ / ____| __ )  / \  | __ )             #"<<endl
+                            <<"# \___ \| | | | |_) |  _| | |_) |   | ' <|  _| |  _ \ / _ \ |  _ \             #"<<endl
+                            <<"#  ___) | |_| |  __/| |___|  _ <    | . \| |___| |_) / ___ \| |_) |            #"<<endl
+                            <<"# |____/ \___/|_|   |_____|_| \_\   |_|\_\_____|____/_/   \_\____/             #"<<endl
+                            <<"#                                                                              #"<<endl
+                            <<"# Consegna tra 15-30 minuti                                                    #"<<endl;
+
+                        for(int i=0; i<6;i++){
+                            cout<<"#------------------------------------------------------------------------------#"<<endl;
+                            cout<<"#";
+                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiSK[x];
+                            cout<<"| ";
+                            i++;
+                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiSK[x];
+                            cout<<"#"<<endl;
+                        }
+                        cout<<"#------------------------------------------------------------------------------#"<<endl;
+                        cout<<"# 0) Torna al menu Ristoranti                                                  #"<<endl
+                            <<"################################################################################"<<endl
+                            <<"Selezionare la pietanza da aggiungere al carrello"<<endl
+                            <<"=>";
+                        cin>>piattoScelto;
+
+                        if(piattoScelto==0) goto menuRistoranti;
+
+                        while(piattoScelto<0||piattoScelto>6){
+                            cout<<"Selezione non valida riprovare"<<endl<<"=>";
+                            cin>>piattoScelto;
+                        }
+                        cout<<"Quante unita' di questo piatto vuoi ordinare? ";
+                        cin>>quantitaPiatto;
+
+                        for(int k=0; k<quantitaPiatto; k++){
+                            if(ultimaPosOccupataCarrello<15){
+                                carrello[ultimaPosOccupataCarrello++]=10+piattoScelto; 
+                            } else {
+                                cout<<"ATTENZIONE: Carrello pieno! Alcuni prodotti non sono stati aggiunti."<<endl;
+                                break; 
+                            }
+                        }
+                        cout<<endl<<"Piatto aggiunto al carrello."<<endl;
+                        cout<<"Vuoi ordinare qualcos'altro da Super Kebab? (s/n): ";
+                        cin>>sceltaSN;
+
+                        if(sceltaSN=='s' || sceltaSN=='S'){
+                            goto superKebab;
+                        } else {
+                        goto menuRistoranti;
+                    }
+                     
 					case 3:
 						cout<<"Hai selezionato come ristorante Sushi Zen, cosa vuoi ordinare dal suo menù?"<<endl;
 						break;
@@ -194,6 +255,29 @@ int main(){
 						}
                 }
                 break;
+			case 9: // SEZIONE CARRELLO 
+                        cout<<"--- CARRELLO ATTUALE ---"<<endl;
+                        if(ultimaPosOccupataCarrello==0) cout<<"Vuoto!"<<endl;
+                        for(int i=0; i<ultimaPosOccupataCarrello; i++){
+                            int id=carrello[i];
+                            if(id>10 && id<20){ // Piatti Super Kebab (11-16)
+                                int p=id-11;
+                                cout<<"- ";
+                                for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
+                                cout<<endl;
+                            }
+                            if(id>40 && id<50){ // Piatti McDonalds (41-46)
+                                int p=id-41;
+                                cout<<"- ";
+                                for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiMC[x];
+                                cout<<endl;
+                            }
+                        }
+                        cout<<"Premi un tasto per tornare ai ristoranti =>";
+                        cin>>scelta;
+                        goto menuRistoranti;
+                        break;
+            }
 			/*	
 				###################################################################
 									MENU DATI PERSONALI UTENTE
