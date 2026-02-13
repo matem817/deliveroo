@@ -26,7 +26,22 @@ int main(){
     bool esci=false, messaggiDEBUG=true;
     int posizioneUtente=0;
     int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
-    int codiceRistorante=0;
+	
+	//menu Ristoranti
+    	int codiceRistorante=0;
+		int piattoScelto;
+
+	//Dati Ristoranti
+		int dimPartizione=38;
+		char piattiMC[]={
+			'1',')','M','c','M','e','n','u',' ','G','r','a','n',' ','C','r','i','s','p','y',' ','M','c','B','a','c','o','n',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'2',')','2',' ','M','c','M','e','n','u',' ','L','a','r','g','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'3',')','M','c','M','e','n','u',' ','C','B','O',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'4',')','M','c','M','e','n','u',' ','1','9','5','5',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'5',')','M','c','M','e','n','u',' ','D','o','u','b','l','e',' ','C','h','i','k','e','n',' ','B','B','Q',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+		};
+
 
     //variabili di dati utente(immagazzinano info sull'utente)
     	//menu nome
@@ -52,7 +67,7 @@ int main(){
 		    <<"||@@@@  @@@@@ @@@@@ @   @   @@@@@ @  @   @@@   @@@ ||"   <<endl
 		    <<"#####################################################"   <<endl
 		    <<"Benvenuti su deliveroo"                                  <<endl
-            <<"Digita 1 per accedere alla mappa ristoranti"             <<endl
+            <<"Digita 1 per vedere i ristoranti vicino a te"            <<endl
 		    <<"Digita 2 per accedere al menu delle impostazioni"        <<endl
 		    <<"Digita 0 per uscire dal programma"                       <<endl;
 
@@ -70,53 +85,95 @@ int main(){
                 cout<<"Grazie per aver usato deliveroo!!!\n";
                 if(messaggiDEBUG) cout<<"DEBUG:uscita del programma\n";
                 break;
+			/*	
+				###################################################################
+									MENU RISTORANTI
+				###################################################################
+			*/
             case 1:
                 //mappaRistoranti:
-                cout<<"|  |Via Torvalds                |  |    #@#  CODICE\t-\tNEGOZI"<<endl
-                    <<"|  |*    *            **********|  |    #@#  ----------------------------------------"<<endl
-                    <<"|  |* 06 *            *        *|  |    #@#  1\t\t-\tMcDonalds"<<endl
-                    <<"|  |******            *     05 *|  |    #@#  ----------------------------------------"<<endl
-                    <<"|  |******            *        *|  |    #@#  2\t\t-\tSuper Kebab"<<endl
-                    <<"|  |*    *            **********|  |    #@#  ----------------------------------------"<<endl
-                    <<"|  |*    *                 *****|  |    #@#  3\t\t-\tSushi Zen"<<endl
-                    <<"|  |******                 *   *|  |    #@#  ----------------------------------------"<<endl
-                    <<"|  |******                 * 04*|  |    #@#  "<<endl
-                    <<"|  |* 07 *                 *   *|  |    #@#  ----------------------------------------"<<endl
-                    <<"|  |*    *                 *****|  |    #@#  "<<endl
-                    <<"|  |******  ********** *********|  |    #@#  ----------------------------------------"<<endl
-                    <<"|  |******  *        * *     03*|  |    #@#  "<<endl
-                    <<"|  |*    *  *        * *********|  |    #@#  ----------------------------------------"<<endl
-                    <<"|  |*    *  *        *          |  |    #@#  "<<endl
-                    <<"|  |******  *        *  ********|  |    #@#  "<<endl
-                    <<"|  |******* *        *  *      *|  |    #@#  "<<endl
-                    <<"|  |*     * *   01   *  *   02 *|  |    #@#  "<<endl
-                    <<"|  |*     * *        *  *      *|  |    #@#  "<<endl
-                    <<"|  |******* **********  ********|  |    #@#  "<<endl
-                    <<"|  |____________________________/  |    #@#  "<<endl
-                    <<"|  |______________________________/     #@#  "<<endl
-                    <<"|  |Via Bjarne *****************        #@#  "<<endl;
-                cout<<"Selezionare il ristorante da cui ordinare.(inserire 0 per tornara al menu' principale)"<<endl;
-                    chiediInputRistorante:
-			        cout<<"=>";
-			        cin>>codiceRistorante;
-                    if(codiceRistorante<0||codiceRistorante>7) {
-                        cout<<"Selezione non valida riprovare\n";
-                        goto chiediInputRistorante;
-                    }
-                    switch(codiceRistorante){
-                        case 0:
-                            goto menuPrincipale;
-                        case 1:
-                            cout<<"Hai selezionato come ristorante McDonald, cosa vuoi ordinare dal suo menù?"<<endl;
-                            break;
-                        case 2:
-                            cout<<"Hai selezionato come ristorante Super Kebab, cosa vuoi ordinare dal suo menù?"<<endl;
-                            break;
-                        case 3:
-                            cout<<"Hai selezionato come ristorante Sushi Zen, cosa vuoi ordinare dal suo menù?"<<endl;
-                            break;
-                    }
+				cout<<"################################################################################"<<endl
+					<<"#                                                                              #"<<endl
+					<<"#  IN PRIMO PIANO                                                              #"<<endl
+					<<"#                                                                              #"<<endl
+					<<"# ++++++++++++++++++  ++++++++++++++++++  ++++++++++++++++++                   #"<<endl
+					<<"# +   ___   _  __  +  +  ___ _         +  +  ___ _  __ ____+                   #"<<endl
+					<<"# +  / __| | |/ /  +  + / __| |        +  + | _ \\ |/ /|_  /+                   #"<<endl
+					<<"# +  \\__ \\ | ' <   +  + \\__ \\ |__      +  + |  _/ ' <  / / +                   #"<<endl
+					<<"# +  |___/ |_|\\_\\  +  + |___/____|     +  + |_| |_|\\_\\/___|+                   #"<<endl
+					<<"# ++++++++++++++++++  ++++++++++++++++++  ++++++++++++++++++                   #"<<endl
+					<<"# 1) Super kebab      2) Sushi Line       3) Pokè zen                          #"<<endl
+					<<"#                                                                              #"<<endl
+					<<"# ++++++++++++++++++  ++++++++++++++++++  ++++++++++++++++++                   #"<<endl
+					<<"# +  __  __  ___   +  +   _      _     +  +   ___ ___  ____+                   #"<<endl
+					<<"# + |  \\/  |/ __|  +  +  | |    /_\\    +  +  / __| _ \\|_  /+                   #"<<endl
+					<<"# + | |\\/| | (__   +  +  | |__ / _ \\   +  + | (_ |   / / / +                   #"<<endl
+					<<"# + |_|  |_|\\___|  +  +  |____/_/ \\_\\  +  +  \\___|_|_\\/___|+                   #"<<endl
+					<<"# ++++++++++++++++++  ++++++++++++++++++  ++++++++++++++++++                   #"<<endl
+					<<"# 4) McDonalds        5) La piadineria    6) Da Graziella                      #"<<endl
+					<<"#                                                                              #"<<endl
+					<<"#  0) Menu iniziale            (7) <= PAG 0 => (8)                             #"<<endl
+					<<"################################################################################"<<endl;
+				chiediInputRistorante:
+				cout<<"=>";
+				cin>>codiceRistorante;
+				if(codiceRistorante<0||codiceRistorante>8) {
+					cout<<"Selezione non valida riprovare\n";
+					goto chiediInputRistorante;
+				}
+				switch(codiceRistorante){
+					case 0:
+						goto menuPrincipale;
+					case 1:
+						cout<<"Hai selezionato come ristorante Super Kebab, cosa vuoi ordinare dal suo menù?"<<endl;
+					break;
+					case 3:
+						cout<<"Hai selezionato come ristorante Sushi Zen, cosa vuoi ordinare dal suo menù?"<<endl;
+						break;
+					case 4:
+						mcDonalds:
+						cout<<"################################################################################"<<endl
+							<<"# __  __         ____                    _     _                               #"<<endl
+							<<"#|  \\/  | ___   |  _ \\  ___  _ __   __ _| | __| |___                           #"<<endl
+							<<"#| |\\/| |/ __|  | | | |/ _ \\| '_ \\ / _` | |/ _` / __|                          #"<<endl
+							<<"#| |  | | (__   | |_| | (_) | | | | (_| | | (_| \\__ \\                          #"<<endl
+							<<"#|_|  |_|\\___|  |____/ \\___/|_| |_|\\__,_|_|\\__,_|___/                          #"<<endl
+							<<"#                                                                              #"<<endl
+							<<"#Consegna tra 10-25 minuti                                                     #"<<endl;
+
+						for(int i=0; i<6;i++){
+							cout<<"#------------------------------------------------------------------------------#"<<endl;
+							cout<<"#";
+							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiMC[x];
+							cout<<"| ";
+							i++;
+							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiMC[x];
+							cout<<"#"<<endl;
+						}
+						cout<<"#------------------------------------------------------------------------------#"<<endl;
+						for(int i=0; i<4; i++){
+							cout<<"#                                                                              #"<<endl;
+						}
+						cout<<"#                                                                              #"<<endl
+							<<"# 0) Menu Principale                                                           #"<<endl
+							<<"################################################################################"<<endl
+							<<"Selezionare la pietanza da aggiungere al carrello"<<endl
+							<<"=>";
+						cin>>piattoScelto;
+						while(piattoScelto<0||piattoScelto>6){
+							cout<<"Selezione non valida riprovare"<<endl
+								<<"=>";
+							cin>>piattoScelto;
+						}
+
+						break;
+                }
                 break;
+			/*	
+				###################################################################
+									MENU DATI PERSONALI UTENTE
+				###################################################################
+			*/
             case 2: //menu dati personali utente
                 menuDatiPersonali:
 				cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl

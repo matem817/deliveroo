@@ -1,0 +1,22 @@
+Popolamento e struttura vettore piatti specifico per ogni ristorante
+
+    Il vettore è composto da stringhe memorizzate con singoli char.
+    Non sono presenti e non andranno memorizzati caratteri di fine linea.
+    Il vettore sarà partizionato in spazi da 38 caratteri ciascuno e, per accedere
+    ai suoi contenuti è necessario usare la seguente sintassi:
+
+    //dichiarazioni a inizio programma
+    int dimPartizione = 38;
+    char piattiMC[38*10];
+    piattiMC={...}
+
+    //Accesso al 3 piatto del mc:
+    for(int i=dimPartizione*3; i<dimPartizione*4; i++){
+        cout<<piattiMC[i];
+    }
+
+    Quindi per accedere al 3 piatto sara necessario un ciclo che va da l'inizio di questa partizione,
+    quindi dimPartizione * numero della partizione sino sua fine, quindi
+    i<dimPartizione* numero partizione + 1.
+    Questo tipo di struttura sarà usato per ogni ristorante
+
