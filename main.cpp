@@ -1,20 +1,20 @@
 /*
 RICORDATE:
 !!!!!!!!!NON PUBBLICARE GLI ESEGUIBILI :D!!!!!!!!!!!
-Se create un nuovo menù ricordatevi di aggiungere il suo id in posizioni valide 
-e un case dentro lo swirch E, di incrementare lungPosizioniValide
 ~Cris
 TODO:
-	fixare TUTTI I MENU dove manca il cout
+	AGGIUNGERE ALTRI RISTORANTI CON I LORO PRODOTTI
+	AGGIUNGERE LA SEZIONE VISUALIZZA CARRELLO NEL MENU RISTORANTI
+		con rimozione item dal carrello
+		visualizzazione prezzi per il singolo item
+		scelta metodo di pagamento (il primo è il predefinito [COME CAZZO FAREMO BHO])
+			se in contanti specificare al rider quanti soldi si daranno
+	SUICIDARSI
+	
 
 COMMENTI:
 bho
 che codice di merda :D
-
-POSIZIONI:
--1=esci da programa
-0=menu principale
-1=menu dati personali dell'utente
 */
 #include<iostream>
 #include<cstdlib>
