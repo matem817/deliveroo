@@ -1,4 +1,6 @@
 .vscode
 main.out
 app
-app
+build/Debug/main.o
+build/Debug/outDebug
+main
