@@ -16,6 +16,8 @@ TODO:
 		3) tornare al menu principale
 		
 	AGGIUNGERE UN SISTEMA PER PULIRE LO SCHERMO DOPO OGNI MENU(stampare una IMMANE quantità di endl)
+
+	URGENTE!!! FIXARE menu delle impostazioni utente, non viene piu visualizzato quando viene inserito 2
 	
 COMPITI ATTUALI:
 	CRISTIAN: Abbellimento menù dei singoli ristoranti con aggiunta di annesse funzioni.
@@ -76,7 +78,8 @@ int main(){
 			int carrello[15], ultimaPosOccupataCarrello=0;
 
 	//menu carrello
-		int totale, importo, resto=totale-importo;
+		int totale, importo, resto; //si capisce no? dai
+		char indirizzoConsegna[150];
 
     //APP
     while(!esci){
@@ -110,7 +113,7 @@ int main(){
                 break;
 			/*	
 				###################################################################
-									MENU RISTORANTI
+										MENU RISTORANTI
 				###################################################################
 			*/
             case 1:
@@ -295,6 +298,7 @@ int main(){
 								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
 							goto menuRistoranti;	
 						}
+						
 					case 9: // SEZIONE CARRELLO 
 						cout<<"--- CARRELLO ATTUALE ---"<<endl;
 						cout<<"PRODOTTO\t\t\t\tRISTORANTE"<<endl;
@@ -323,8 +327,9 @@ int main(){
 						cin>>scelta;
 
 						switch(scelta){
-							case 1:
-								cout<<"Pagherai tramite: ";
+							case 1: //ordina e paga
+								cout<<"Dovrai pagare un totale di "<<totale<<" euro"<<endl
+									<<"Pagherai tramite: ";
 								switch(metodoPagamentoPreferito){
 									case 0:
 										cout<<"contanti. Inserisci l'importo che consegnerai al rider per il calcolo del resto: ";
@@ -333,14 +338,54 @@ int main(){
 										cout<<"Riceverai "<<resto<<" euro di resto";
 										break;
 									case 1:
-										cout<<"carta. "<<endl<<"Verifica se le informazioni sono corrette: "<<endl;
+										cout<<"carta. "<<endl<<"Verifica se le informazioni sono corrette: "<<endl
+											<<"	Nome e Cognome sulla carta: ";
+											for(int i=0; i<15; i++){
+												if(nomeCarta[i]=='0') break;
+												cout<<nomeCarta[i];
+											}
+											cout<<" ";
+												for(int i=0; i<15; i++){
+													if(cognomeCarta[i]=='0') break;
+													cout<<cognomeCarta[i];
+												}
+											cout<<endl;
+												for(int i=0; i<16; i++){									
+													cout<<cartaCredito[i];
+													if(i==4 or i==8 or i==12) cout<<"-";
+												}
+										break;
+									case 2:
+										cout<<"PayPal. Verifica se le informazioni sono corrette. "<<endl
+											<<"Nome utente: ";
+											for (int i=0; i<30; i++){
+												if(utentePaypal[i] == '0') break;
+												cout<<utentePaypal[i];										
+											}
+										break;
+									case 3:
+										cout<<"Gold Card. Non pagherai niente!";
+										totale=0;
+										break;
 								}
-						}
-				
-					goto menuRistoranti;
-					
-                }
-            	break;
+
+								cout<<"Inserisci l'inidirizzo di consegna (inserisci 0 per concludere): ";
+								for(int i=0; i<150; i++){
+									cin>>indirizzoConsegna[i];
+									if(indirizzoConsegna[i]=='0') break;
+								}
+								
+								cout<<"Riepilogo ordine: "<<endl //DA COMPLETARE
+									<<"BLA BLA BLA"<<endl;
+
+								cout<<"Confermi? Ovvio che si. "<<endl<<endl; //OVVIAMENTE DA MODIFICARE - AGGIUNGERE SCELTA, SE NON SI CONFERMA SI RIBUTTA AL MENU DEL CARRELLO
+								goto menuPrincipale; //ANCHE QUESTO E' TEMPORANEO - DOBBIAMO ACCORDARCI SE FAR CHIUDERE IL PROGRAMMA O SE RIPULIRE SEMPLICEMENTE TUTTO
+
+							case 2:
+								break;
+                		}
+            	
+			break;
 					
 			
 			/*	
@@ -514,5 +559,6 @@ int main(){
         }
         if(messaggiDEBUG) cout<<"DEBUG:Eseguito un ciclo\n";
         
-    }
+    	}
+	}
 }
