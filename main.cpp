@@ -26,7 +26,9 @@ int main(){
     bool esci=false, messaggiDEBUG=true;
     int posizioneUtente=0;
     int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
-	
+	int scelta; //variabile da usare per tutti i menù di scelta (Il suo valore non dovrà mai essere chiamato prima di cin>>scelta;)
+	char sceltaSN='n';
+
 	//menu Ristoranti
     	int codiceRistorante=0;
 		int piattoScelto;
@@ -41,8 +43,7 @@ int main(){
 			'5',')','M','c','M','e','n','u',' ','D','o','u','b','l','e',' ','C','h','i','k','e','n',' ','B','B','Q',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 		};
-
-
+	
     //variabili di dati utente(immagazzinano info sull'utente)
     	//menu nome
 			char nome[30];
@@ -52,7 +53,8 @@ int main(){
 			int cartaCredito[16], cvv;
 			char nomeCarta[15], cognomeCarta[15];
 			char utentePaypal[30];
-    
+		//ordini
+			int carrello[15], ultimaPosOccupataCarrello=0;
 
 
     //APP
@@ -91,7 +93,7 @@ int main(){
 				###################################################################
 			*/
             case 1:
-                //mappaRistoranti:
+                menuRistoranti:
 				cout<<"################################################################################"<<endl
 					<<"#                                                                              #"<<endl
 					<<"#  IN PRIMO PIANO                                                              #"<<endl
@@ -112,12 +114,12 @@ int main(){
 					<<"# ++++++++++++++++++  ++++++++++++++++++  ++++++++++++++++++                   #"<<endl
 					<<"# 4) McDonalds        5) La piadineria    6) Da Graziella                      #"<<endl
 					<<"#                                                                              #"<<endl
-					<<"#  0) Menu iniziale            (7) <= PAG 0 => (8)                             #"<<endl
+					<<"#  0) Menu iniziale           |(7) <= PAG 0 => (8)|   9) Visualizza carrello   #"<<endl
 					<<"################################################################################"<<endl;
 				chiediInputRistorante:
 				cout<<"=>";
 				cin>>codiceRistorante;
-				if(codiceRistorante<0||codiceRistorante>8) {
+				if(codiceRistorante<0||codiceRistorante>9) {
 					cout<<"Selezione non valida riprovare\n";
 					goto chiediInputRistorante;
 				}
@@ -165,8 +167,30 @@ int main(){
 								<<"=>";
 							cin>>piattoScelto;
 						}
+						carrello[ultimaPosOccupataCarrello++]=40+piattoScelto;
+						cout<<endl;
+						for(int x=piattoScelto*dimPartizione; x<dimPartizione*(piattoScelto+1); x++) cout<<piattiMC[x];
+						cout<<endl<<"Aggiunto al carrello."<<endl;
 
-						break;
+						if(ultimaPosOccupataCarrello<15){
+							cout<<"Vuoi ordinare qualcosaltro da McDonalds?(S/n): ";
+							cin>>sceltaSN;
+							switch(sceltaSN){
+								case 'n':
+								case 'N':
+									goto menuRistoranti;
+									break;
+								default:
+									goto mcDonalds;
+							}
+
+							goto mcDonalds;
+							break;
+						}else{
+							cout<<"Il tuo carrello è pieno!!!"<<endl
+								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
+							goto menuRistoranti;	
+						}
                 }
                 break;
 			/*	

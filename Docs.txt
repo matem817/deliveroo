@@ -21,8 +21,9 @@
     Questo tipo di struttura sarà usato per ogni ristorante
 
 #2 Identificazione piatti nel vettore carrello
-    Il vettore carrello è un vettore di 15 elementi che contiene gli ID dei prodotti ordinati, gli id sono composti da 2 cifre,
-    la prima cifra indica il ristorante di appartenenza mentre la seconda il prodotto ordinato.
+    Il vettore carrello è un vettore di 15 elementi che contiene gli ID dei prodotti ordinati,
+    gli id sono composti da 2 cifre, la prima cifra indica il ristorante di appartenenza mentre
+    la seconda il prodotto ordinato.
 
     TABELLA PRIMA CIFRA ID:
     RISTORANTE      PRIMA CIFRA
