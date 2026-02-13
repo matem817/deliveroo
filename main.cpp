@@ -169,6 +169,7 @@ int main(){
 						}
 						carrello[ultimaPosOccupataCarrello++]=40+piattoScelto;
 						cout<<endl;
+						piattoScelto--;//decremento perche le partizioni partono da 0 non da 1 :D 
 						for(int x=piattoScelto*dimPartizione; x<dimPartizione*(piattoScelto+1); x++) cout<<piattiMC[x];
 						cout<<endl<<"Aggiunto al carrello."<<endl;
 
