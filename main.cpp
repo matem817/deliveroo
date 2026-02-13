@@ -10,6 +10,7 @@ TODO:
 		scelta metodo di pagamento (il primo è il predefinito [COME CAZZO FAREMO BHO])
 			se in contanti specificare al rider quanti soldi si daranno
 	SUICIDARSI/kurt kobain pov
+	AGGIUNGERE UN SISTEMA PER PULIRE LO SCHERMO DOPO OGNI MENU(stampare una IMMANE quantità di endl)
 	
 COMPITI ATTUALI:
 	CRISTIAN: Abbellimento menù dei singoli ristoranti con aggiunta di annesse funzioni.
@@ -159,6 +160,9 @@ int main(){
                             cout<<"#"<<endl;
                         }
                         cout<<"#------------------------------------------------------------------------------#"<<endl;
+						for(int i=0; i<4; i++){
+							cout<<"#                                                                              #"<<endl;
+						}
                         cout<<"# 0) Torna al menu Ristoranti                                                  #"<<endl
                             <<"################################################################################"<<endl
                             <<"Selezionare la pietanza da aggiungere al carrello"<<endl
@@ -171,6 +175,11 @@ int main(){
                             cout<<"Selezione non valida riprovare"<<endl<<"=>";
                             cin>>piattoScelto;
                         }
+
+						cout<<"E stato scelto "<<endl;
+						for(int x=(piattoScelto-1)*dimPartizione; x<dimPartizione*(piattoScelto); x++) cout<<piattiSK[x];
+						cout<<endl;
+
                         cout<<"Quante unita' di questo piatto vuoi ordinare? ";
                         cin>>quantitaPiatto;
 
@@ -178,19 +187,30 @@ int main(){
                             if(ultimaPosOccupataCarrello<15){
                                 carrello[ultimaPosOccupataCarrello++]=10+piattoScelto; 
                             } else {
-                                cout<<"ATTENZIONE: Carrello pieno! Alcuni prodotti non sono stati aggiunti."<<endl;
                                 break; 
                             }
                         }
-                        cout<<endl<<"Piatto aggiunto al carrello."<<endl;
-                        cout<<"Vuoi ordinare qualcos'altro da Super Kebab? (s/N): ";
-                        cin>>sceltaSN;
 
-                        if(sceltaSN=='s' || sceltaSN=='S'){
-                            goto superKebab;
-                        } else {
-                        goto menuRistoranti;
-                    }
+                        if(ultimaPosOccupataCarrello<15){
+							cout<<"Vuoi ordinare qualcosaltro da SuperKebab?(S/n): ";
+							cin>>sceltaSN;
+							switch(sceltaSN){
+								case 'n':
+								case 'N':
+									goto menuRistoranti;
+									break;
+								default:
+									goto superKebab;
+							}
+
+							goto mcDonalds;
+							break;
+						}else{
+							cout<<"Il tuo carrello è pieno!!!"<<endl
+								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
+							goto menuRistoranti;	
+						}
+                    
                      
 					case 3:
 						cout<<"Hai selezionato come ristorante Sushi Zen, cosa vuoi ordinare dal suo menù?"<<endl;
@@ -230,21 +250,22 @@ int main(){
 								<<"=>";
 							cin>>piattoScelto;
 						}
+						//decremento perche le partizioni partono da 0 non da 1 :D 
+						cout<<"E stato scelto "<<endl;
+						for(int x=(piattoScelto-1)*dimPartizione; x<dimPartizione*(piattoScelto); x++) cout<<piattiMC[x];
+						cout<<endl;
+
 						cout<<"Quante unita' di questo piatto vuoi ordinare? ";
                         cin>>quantitaPiatto;
 
                         for(int k=0; k<quantitaPiatto; k++){
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[ultimaPosOccupataCarrello++]=10+piattoScelto; 
+                                carrello[ultimaPosOccupataCarrello++]=40+piattoScelto; 
                             } else {
-                                cout<<"ATTENZIONE: Carrello pieno! Alcuni prodotti non sono stati aggiunti."<<endl;
                                 break; 
                             }
                         }
-						carrello[ultimaPosOccupataCarrello++]=40+piattoScelto;
-						cout<<endl;
-						piattoScelto--;//decremento perche le partizioni partono da 0 non da 1 :D 
-						for(int x=piattoScelto*dimPartizione; x<dimPartizione*(piattoScelto+1); x++) cout<<piattiMC[x];
+						
 						cout<<endl<<"Aggiunto al carrello."<<endl;
 
 						if(ultimaPosOccupataCarrello<15){
@@ -268,20 +289,21 @@ int main(){
 						}
 					case 9: // SEZIONE CARRELLO 
 						cout<<"--- CARRELLO ATTUALE ---"<<endl;
+						cout<<"PRODOTTO\t\t\t\tRISTORANTE"<<endl;
 						if(ultimaPosOccupataCarrello==0) cout<<"Vuoto!"<<endl;
 						for(int i=0; i<ultimaPosOccupataCarrello; i++){
 							int id=carrello[i];
 							if(id>10 && id<20){ // Piatti Super Kebab (11-16)
 								int p=id-11;
 								cout<<"- ";
-								for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
-								cout<<endl;
+								for(int x=p*dimPartizione+2; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
+								cout<<"\tSuper Kebab"<<endl;
 							}
 							if(id>40 && id<50){ // Piatti McDonalds (41-46)
 								int p=id-41;
 								cout<<"- ";
-								for(int x=p*dimPartizione; x<dimPartizione*(p+1); x++) cout<<piattiMC[x];
-								cout<<endl;
+								for(int x=p*dimPartizione+2; x<dimPartizione*(p+1); x++) cout<<piattiMC[x];
+								cout<<"\tMcDonalds"<<endl;
 							}
 						}
 						cout<<"Premi un tasto per tornare ai ristoranti =>";
