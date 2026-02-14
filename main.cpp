@@ -384,7 +384,7 @@ int main(){
 							case 2:
 								break;
                 		}
-            	
+					}
 			break;
 					
 			
@@ -559,6 +559,6 @@ int main(){
         }
         if(messaggiDEBUG) cout<<"DEBUG:Eseguito un ciclo\n";
         
-    	}
+    	
 	}
 }
