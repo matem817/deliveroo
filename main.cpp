@@ -74,7 +74,7 @@ int main(){
 			char nomeCarta[15], cognomeCarta[15];
 			char utentePaypal[30];
 		//ordini
-			int carrello[15], ultimaPosOccupataCarrello=0;
+			int carrello[15], ultimaPosOccupataCarrello=-1;
 			int opzioniPiatti[15*3];
 
 	//menu carrello
@@ -197,6 +197,7 @@ int main(){
 						//personalizzazione piatto
                         for(int k=0; k<quantitaPiatto; k++){ 
                             if(ultimaPosOccupataCarrello<15){
+								ultimaPosOccupataCarrello++;
 								carrello[ultimaPosOccupataCarrello]=10+piattoScelto; 
 								cout<<"Personalizzare il proprio menù"<<endl;
 								switch (piattoScelto){
@@ -239,7 +240,6 @@ int main(){
 											cin>>scelta;
 										}
 										opzioniPiatti[ultimaPosOccupataCarrello*3+2]=scelta;
-										ultimaPosOccupataCarrello++;
 										break;
 									case 5:
 										cout<<"Scegliere la dimensione:"<<endl
@@ -394,14 +394,15 @@ int main(){
 						}
 						
 					case 9: // SEZIONE CARRELLO 
+						menuCarrello:
 						cout<<"--- CARRELLO ATTUALE ---"<<endl;
 						cout<<"PRODOTTO\t\t\t\tRISTORANTE"<<endl;
-						if(ultimaPosOccupataCarrello==0) cout<<"Vuoto!"<<endl;
-						for(int i=0; i<ultimaPosOccupataCarrello; i++){
+						if(ultimaPosOccupataCarrello==-1) cout<<"Vuoto!"<<endl;
+						for(int i=0; i<ultimaPosOccupataCarrello+1; i++){
 							int id=carrello[i];
 							if(id>10 && id<20){ // Piatti Super Kebab (11-16)
 								int p=id-11;
-								cout<<"- ";
+								cout<<i+1<<")";
 								for(int x=p*dimPartizione+2; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
 								cout<<"\tSuper Kebab"<<endl;
 								switch(p+1){
@@ -470,7 +471,7 @@ int main(){
 										}
 										break;
 									case 6:
-										cout<<"\bBibita: ";
+										cout<<"\tBibita: ";
 										switch(opzioniPiatti[i*3]){
 											case 1:
 												cout<<"Acqua"<<endl;
@@ -492,11 +493,12 @@ int main(){
 								cout<<"\tMcDonalds"<<endl;
 							}
 						}
-
+						cout<<endl;
 						cout<<"Scegli una tra le seguenti opzioni: "<<endl
 							<<"1 - Ordina e paga"<<endl
-							<<"2 - Torna al menu dei ristoranti"<<endl
-							<<"3 - Torna al menu principale"<<endl
+							<<"2 - Rimuovi un elemento dal carrello"<<endl
+							<<"3 - Torna al menu dei ristoranti"<<endl
+							<<"0 - Torna al menu principale"<<endl
 							<<"=> ";
 						cin>>scelta;
 
@@ -555,14 +557,55 @@ int main(){
 
 								cout<<"Confermi? Ovvio che si. "<<endl<<endl; //OVVIAMENTE DA MODIFICARE - AGGIUNGERE SCELTA, SE NON SI CONFERMA SI RIBUTTA AL MENU DEL CARRELLO
 								goto menuPrincipale; //ANCHE QUESTO E' TEMPORANEO - DOBBIAMO ACCORDARCI SE FAR CHIUDERE IL PROGRAMMA O SE RIPULIRE SEMPLICEMENTE TUTTO
-
-							case 2:
 								break;
+							case 2:
+								cout<<"Quale ordine vuoi rimuovere(inserisci il suo numero, 0 per tornare indietro)?"<<endl;
+								cout<<"=>";
+								cin>>scelta;
+								while(scelta<0 or scelta>ultimaPosOccupataCarrello+1){
+									cout<<"Opzione non valida, riprova."<<endl
+										<<"=>";
+									cin>>scelta;
+								}
+								if(scelta==0) goto menuCarrello;
+								scelta--;//decremento perche gli index vanno da 0 e non da 1
+								for(int i=scelta; i<15; i++){
+        							carrello[i]=carrello[i+1];
+    							}
+								for(int x=0; x<3; x++){
+									for(int i=scelta*3; i<15; i++){
+        								opzioniPiatti[i]=opzioniPiatti[i+1];
+    								}
+								}
+								ultimaPosOccupataCarrello--;//abbiamo liberato una posizione :D
+								goto menuCarrello;
+								break;
+							case 3:
+								goto menuRistoranti;
+								break;
+							case 0:
+								goto menuPrincipale;
                 		}
 					}
 			break;
 					
-			
+			/*
+												 |\ /\
+								 __              |,\(_\_
+								( (              |\,`   `-^.
+								 \ \             :    `-'   )
+								  \ \             \        ;
+								   \ \             `-.   ,'
+									\ \ ____________,'  (
+									; '                ;
+									\                 /___,-.
+									`,    ,_____|  ;'_____,'
+									,-" \  :      | :
+								( .-" \ `.__   | |
+									\__)  `.__,'  |__)  
+								GATTO DI BUONA FORTUNA PER QUESTO CODICE
+
+			*/
 			/*	
 				###################################################################
 									MENU DATI PERSONALI UTENTE
