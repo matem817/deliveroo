@@ -61,6 +61,7 @@ int main(){
       	  	'5',')','P','a','t','a','t','i','n','e',' ','F','r','i','t','t','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
       	  	'6',')','B','i','b','i','t','a',' ','a',' ','s','c','e','l','t','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         };
+		
         int quantitaPiatto;
 	
     //variabili di dati utente(immagazzinano info sull'utente)
@@ -74,6 +75,7 @@ int main(){
 			char utentePaypal[30];
 		//ordini
 			int carrello[15], ultimaPosOccupataCarrello=0;
+			int opzioniPiatti[15*3];
 
 	//menu carrello
 		int totale, importo, resto; //si capisce no? dai
@@ -192,9 +194,102 @@ int main(){
                         cout<<"Quante unita' di questo piatto vuoi ordinare? ";
                         cin>>quantitaPiatto;
 
-                        for(int k=0; k<quantitaPiatto; k++){
+						//personalizzazione piatto
+                        for(int k=0; k<quantitaPiatto; k++){ 
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[ultimaPosOccupataCarrello++]=10+piattoScelto; 
+								carrello[ultimaPosOccupataCarrello]=10+piattoScelto; 
+								cout<<"Personalizzare il proprio menù"<<endl;
+								switch (piattoScelto){
+									case 1 ... 4:
+										cout<<"Scegliere la dimensione:"<<endl
+											<<"1-Grande"<<endl
+											<<"2-Medio"<<endl
+											<<"3-Piccolo"<<endl;
+										cout<<"=>";
+										cin>>scelta;
+										while(scelta<1 or scelta>3){
+											cout<<"Opzione invalida, riprovare."<<endl
+											<<"=>";
+											cin>>scelta;
+										}
+										opzioniPiatti[ultimaPosOccupataCarrello*3]=scelta;
+
+										cout<<"Scegliere un contorno:"<<endl
+											<<"1-Patatine"<<endl
+											<<"2-Patatine Piccanti"<<endl
+											<<"3-Nessuno"<<endl;
+										cout<<"=>";
+										cin>>scelta;
+										while(scelta<1 or scelta>3){
+											cout<<"Opzione invalida, riprovare."<<endl
+											<<"=>";
+											cin>>scelta;
+										}
+										opzioniPiatti[ultimaPosOccupataCarrello*3+1]=scelta;
+
+										cout<<"Scegliere una bibita:"<<endl
+											<<"1-Acqua"<<endl
+											<<"2-CocaCola"<<endl
+											<<"3-Sprite"<<endl;
+										cout<<"=>";
+										cin>>scelta;
+										while(scelta<1 or scelta>3){
+											cout<<"Opzione invalida, riprovare."<<endl
+											<<"=>";
+											cin>>scelta;
+										}
+										opzioniPiatti[ultimaPosOccupataCarrello*3+2]=scelta;
+										ultimaPosOccupataCarrello++;
+									case 5:
+										cout<<"Scegliere la dimensione:"<<endl
+											<<"1-Grande"<<endl
+											<<"2-Medio"<<endl
+											<<"3-Piccolo"<<endl;
+										cout<<"=>";
+										cin>>scelta;
+										while(scelta<1 or scelta>3){
+											cout<<"Opzione invalida, riprovare."<<endl
+											<<"=>";
+											cin>>scelta;
+										}
+										opzioniPiatti[ultimaPosOccupataCarrello*3]=scelta;
+
+										cout<<"Scegliere una salsa da aggiungere:"<<endl
+											<<"1-Maionese"<<endl
+											<<"2-Ketchup"<<endl
+											<<"3-Nessuna"<<endl;
+										cout<<"=>";
+										cin>>scelta;
+										while(scelta<1 or scelta>3){
+											cout<<"Opzione invalida, riprovare."<<endl
+											<<"=>";
+											cin>>scelta;
+										}
+										opzioniPiatti[ultimaPosOccupataCarrello*3+1]=scelta;
+										opzioniPiatti[ultimaPosOccupataCarrello*3+2]=0;
+										break;
+									case 6:
+									cout<<"Scegliere la bibita:"<<endl
+											<<"1-Acqua"<<endl
+											<<"2-CocaCola"<<endl
+											<<"3-Sprite"<<endl;
+										cout<<"=>";
+										cin>>scelta;
+										while(scelta<1 or scelta>3){
+											cout<<"Opzione invalida, riprovare."<<endl
+											<<"=>";
+											cin>>scelta;
+										}
+										opzioniPiatti[ultimaPosOccupataCarrello*3]=scelta;
+										opzioniPiatti[ultimaPosOccupataCarrello*3+1]=scelta=0;
+										opzioniPiatti[ultimaPosOccupataCarrello*3+2]=scelta=0;
+										
+										break;
+									default:
+										cout<<"##########ERRORE############"<<endl;
+										cout<<"Errore nel menu personalizzaione piatto"<<endl;
+										break;
+								}
                             } else {
                                 break; 
                             }

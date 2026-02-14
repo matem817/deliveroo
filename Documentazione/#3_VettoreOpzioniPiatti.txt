@@ -1,29 +1,58 @@
-Questo vettore contiene le opzioni di personalizzazione dei piatti, ogni piatto ha la 3 personalizzazioni, con 3 scelte per
-personalizzazione, per la prima scelta è possibile selezionare una opzione, lo stesso per la seconda, per la terza invece sarà possibile
-sceglere tutte le opzioni.
+Questo vettore contiene le preferenze relative ai piatti all'interno del carrello.
+Per questo motivo è da considerarsi un vettore semi parallelo.
+Le preferenze per i piatti sono codificate in questo modo
+Ad ogni elemento del carrello corrispondono 3 elementi del vettore.
+il numero all'interno del vettore indica il modificatore selezionato
 
-Il vettore è strutturato in diverse sezioni ed è specifico per ogni ristorante.
-La prima divisone è per piatti di ristorante. Ogni piatto sara diviso in altre 3 sezioni contenenti le varie scelte
-dopo di che queste scelte saranno divise in altre 3 opzioni per un totale di 54 partizioni (3*3*6), ecco la struttura ad albero
+Un piatto portebbe essere impostato come segue:
+Kebab
+    menùgrandezza(1):
+        Grande
+        Medio  X
+        Piccolo
+    menuPatatine(2):
+        Nessuna X
+        Patatine
+        Patatine Piccanti
+    menuBibite(3)
+        Acqua X
+        Coca
+        Sprite
 
-VETTORE 
-    piatto 1
-        opzione 1 |
-        opzione 2 |SCELTA 1
-        opzione 3 |_________
-        opzione 4 |
-        opzione 5 |SCELTA 2
-        opzione 6 |_________
-        opzione 7 |
-        opzione 8 |SCELTA 3
-        opzione 9 |
-    piatto 2
-        ...
+opzioniPiatti[]={2,1,1} //lo zero è riservato per non selezionato
 
-Ogni opzione avrà un numero massimo di 10 caratteri quindi per accedere a una qualsiasi opzione servria il seguente codice:
+Gli altri piatti saranno posti uno dietro l'altro.
 
-int dimPartPiatto=90;
-int posDiPartenze;
 
-posDiPartenza=dimPartPiatto*(<N_piatto>-1)+(30*<Nscelta>-1)+(10*<NOpzione-1>);
-for(int i=posDiPartenza; i<posDiPartenza+5;i++) cout<<OpzioniPiatti<ristorante>[i];
+######## OPZIONI PER TUTTI I PIATTI NEL PROGRAMMA
+
+#### SUPER KEBAB ####
+da 1 a 4
+    dimenisone 
+        grande
+        Medio
+        Piccolo
+    contorno
+        Patatine
+        Patate Piccanti
+        Nessuno
+    Bibita
+        Acqua
+        CocaCola
+    Sprite
+
+5:
+    dimenisone 
+        grande
+        Medio
+        Piccolo
+    salsa
+        Maionese
+        Ketchup
+        Nessuna
+
+6:
+    Bibita
+        Acqua
+        CocaCola
+        Sprite
