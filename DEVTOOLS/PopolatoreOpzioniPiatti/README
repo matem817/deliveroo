@@ -1,4 +1,0 @@
-Questo tool permette di popolare il vettore opzioni piatti facilmente, Per ogni opzione sara necessario scrivere una
-riga nel file input.txt e quando si esegue PopolatoreVettoreOpzioniPiatti.py questo prenderà in input il file
-restituendo un vettore nella forma {'H', 'e', 'l', 'l', 'o',}.
-Sara necessario per una sintassi corretta eliminare l'ultima virgola all'interno del vettore.

@@ -216,7 +216,7 @@ int main(){
 
 										cout<<"Scegliere un contorno:"<<endl
 											<<"1-Patatine"<<endl
-											<<"2-Patatine Piccanti"<<endl
+											<<"2-Patate Piccanti"<<endl
 											<<"3-Nessuno"<<endl;
 										cout<<"=>";
 										cin>>scelta;
@@ -240,6 +240,7 @@ int main(){
 										}
 										opzioniPiatti[ultimaPosOccupataCarrello*3+2]=scelta;
 										ultimaPosOccupataCarrello++;
+										break;
 									case 5:
 										cout<<"Scegliere la dimensione:"<<endl
 											<<"1-Grande"<<endl
@@ -403,6 +404,86 @@ int main(){
 								cout<<"- ";
 								for(int x=p*dimPartizione+2; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
 								cout<<"\tSuper Kebab"<<endl;
+								switch(p+1){
+									case 1 ... 4:
+										cout<<"\tDimensione: ";
+										switch(opzioniPiatti[i*3]){
+											case 1:
+												cout<<"Grande"<<endl;
+												break;
+											case 2:
+												cout<<"Medio"<<endl;
+												break;
+											case 3:
+												cout<<"Piccolo"<<endl;
+												break;
+										}
+										cout<<"\tContorno: ";
+										switch(opzioniPiatti[i*3+1]){
+											case 1:
+												cout<<"Patatine"<<endl;
+												break;
+											case 2:
+												cout<<"Patate Piccanti"<<endl;
+												break;
+											case 3:
+												cout<<"Nessuno"<<endl;
+												break;
+										}
+										cout<<"\tBibita: ";
+										switch(opzioniPiatti[i*3+1]){
+											case 1:
+												cout<<"Acqua"<<endl;
+												break;
+											case 2:
+												cout<<"Acqua"<<endl;
+												break;
+											case 3:
+												cout<<"Sprite"<<endl;
+												break;
+										}
+										break;
+									case 5:
+										cout<<"\tDimensione: ";
+										switch(opzioniPiatti[i*3]){
+											case 1:
+												cout<<"Grande"<<endl;
+												break;
+											case 2:
+												cout<<"Medio"<<endl;
+												break;
+											case 3:
+												cout<<"Piccolo"<<endl;
+												break;
+										}
+										cout<<"\tSalsa: ";
+										switch(opzioniPiatti[i*3+1]){
+											case 1:
+												cout<<"Maionese"<<endl;
+												break;
+											case 2:
+												cout<<"Ketchup"<<endl;
+												break;
+											case 3:
+												cout<<"Nessuna"<<endl;
+												break;
+										}
+										break;
+									case 6:
+										cout<<"\bBibita: ";
+										switch(opzioniPiatti[i*3]){
+											case 1:
+												cout<<"Acqua"<<endl;
+												break;
+											case 2:
+												cout<<"CocaCola"<<endl;
+												break;
+											case 3:
+												cout<<"Piccolo"<<endl;
+												break;
+										}
+										break;
+								}
 							}
 							if(id>40 && id<50){ // Piatti McDonalds (41-46)
 								int p=id-41;
@@ -425,7 +506,8 @@ int main(){
 									<<"Pagherai tramite: ";
 								switch(metodoPagamentoPreferito){
 									case 0:
-										cout<<"contanti. Inserisci l'importo che consegnerai al rider per il calcolo del resto: ";
+										cout<<"contanti."<<endl
+											<<"Inserisci l'importo che consegnerai al rider per il calcolo del resto: ";
 										cin>>importo;
 										if(importo==0) break;
 										cout<<"Riceverai "<<resto<<" euro di resto";

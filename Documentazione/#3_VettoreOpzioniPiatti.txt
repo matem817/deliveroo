@@ -38,8 +38,8 @@ da 1 a 4
         Nessuno
     Bibita
         Acqua
-        CocaCola
-    Sprite
+        Acqua
+        Sprite
 
 5:
     dimenisone 

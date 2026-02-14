@@ -1,7 +1,0 @@
-cibo
-cibo2
-cibo5
-coca
-suca
-sprite
-lolo
