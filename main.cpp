@@ -20,7 +20,7 @@ TODO:
 	URGENTE!!! FIXARE menu delle impostazioni utente, non viene piu visualizzato quando viene inserito 2
 	
 COMPITI ATTUALI:
-	CRISTIAN: Abbellimento menù dei singoli ristoranti con aggiunta di annesse funzioni.
+	CRISTIAN: Personalizzazione piatti
 	MATTIA: menu carrello
 	ANDREA:
 COMMENTI:
