@@ -1,0 +1,29 @@
+Questo vettore contiene le opzioni di personalizzazione dei piatti, ogni piatto ha la 3 personalizzazioni, con 3 scelte per
+personalizzazione, per la prima scelta è possibile selezionare una opzione, lo stesso per la seconda, per la terza invece sarà possibile
+sceglere tutte le opzioni.
+
+Il vettore è strutturato in diverse sezioni ed è specifico per ogni ristorante.
+La prima divisone è per piatti di ristorante. Ogni piatto sara diviso in altre 3 sezioni contenenti le varie scelte
+dopo di che queste scelte saranno divise in altre 3 opzioni per un totale di 54 partizioni (3*3*6), ecco la struttura ad albero
+
+VETTORE 
+    piatto 1
+        opzione 1 |
+        opzione 2 |SCELTA 1
+        opzione 3 |_________
+        opzione 4 |
+        opzione 5 |SCELTA 2
+        opzione 6 |_________
+        opzione 7 |
+        opzione 8 |SCELTA 3
+        opzione 9 |
+    piatto 2
+        ...
+
+Ogni opzione avrà un numero massimo di 10 caratteri quindi per accedere a una qualsiasi opzione servria il seguente codice:
+
+int dimPartPiatto=90;
+int posDiPartenze;
+
+posDiPartenza=dimPartPiatto*(<N_piatto>-1)+(30*<Nscelta>-1)+(10*<NOpzione-1>);
+for(int i=posDiPartenza; i<posDiPartenza+5;i++) cout<<OpzioniPiatti<ristorante>[i];

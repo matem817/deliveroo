@@ -16,8 +16,6 @@ TODO:
 		3) tornare al menu principale
 		
 	AGGIUNGERE UN SISTEMA PER PULIRE LO SCHERMO DOPO OGNI MENU(stampare una IMMANE quantità di endl)
-
-	URGENTE!!! FIXARE menu delle impostazioni utente, non viene piu visualizzato quando viene inserito 2
 	
 COMPITI ATTUALI:
 	CRISTIAN: Personalizzazione piatti

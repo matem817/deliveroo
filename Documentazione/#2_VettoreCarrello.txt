@@ -1,0 +1,16 @@
+#2 Identificazione piatti nel vettore carrello
+    Il vettore carrello è un vettore di 15 elementi che contiene gli ID dei prodotti ordinati,
+    gli id sono composti da 2 cifre, la prima cifra indica il ristorante di appartenenza mentre
+    la seconda il prodotto ordinato.
+
+    TABELLA PRIMA CIFRA ID:
+    RISTORANTE      PRIMA CIFRA
+    SuperKebab      1
+    Sushi Line      2
+    Pokè zen        3
+    McDonalds       4
+    La Piadineria   5
+    Da Graziella    6
+
+    La seconda cifra può essere associata alla partizione nel vettore piatti del ristorante specifico, es.
+    codice 11 sara la prima partizione (partizione 0), nel vettore piattiSK[]
