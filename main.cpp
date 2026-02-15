@@ -47,14 +47,7 @@ int main(){
 
 	//Dati Ristoranti (vedi Docs.txt #1)
 		int dimPartizione=38;
-		char piattiMC[]={
-			'1',')','M','c','M','e','n','u',' ','G','r','a','n',' ','C','r','i','s','p','y',' ','M','c','B','a','c','o','n',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-			'2',')','2',' ','M','c','M','e','n','u',' ','L','a','r','g','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-			'3',')','M','c','M','e','n','u',' ','C','B','O',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-			'4',')','M','c','M','e','n','u',' ','1','9','5','5',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-			'5',')','M','c','M','e','n','u',' ','D','o','u','b','l','e',' ','C','h','i','k','e','n',' ','B','B','Q',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-		};
+
 		float prezziarioMC[]={12.20,15.90,13.60,14.15,7.30,13.20};
 		char piattiSK[]={
         	'1',')','K','e','b','a','b',' ','C','o','m','p','l','e','t','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
@@ -68,6 +61,34 @@ int main(){
 
 		
         int quantitaPiatto;
+
+		char piattiMC[]={
+			'1',')','M','c','M','e','n','u',' ','G','r','a','n',' ','C','r','i','s','p','y',' ','M','c','B','a','c','o','n',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'2',')','2',' ','M','c','M','e','n','u',' ','L','a','r','g','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'3',')','M','c','M','e','n','u',' ','C','B','O',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'4',')','M','c','M','e','n','u',' ','1','9','5','5',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'5',')','M','c','M','e','n','u',' ','D','o','u','b','l','e',' ','C','h','i','k','e','n',' ','B','B','Q',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+		};
+
+        char piattiPZ[]={
+            '1',')','P','o','k','e',' ','S','a','l','m','o','n','e',' ','S','p','i','c','y',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '2',')','P','o','k','e',' ','T','u','n','a',' ','E','x','o','t','i','c',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '3',')','P','o','k','e',' ','V','e','g','e','t','a','r','i','a','n','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '4',')','M','o','c','h','i',' ','M','i','s','t','i',' ','(','3','p','z',')',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '5',')','Z','u','p','p','a',' ','d','i',' ','M','i','s','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '6',')','A','c','q','u','a',' ','N','a','t','u','r','a','l','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        };
+
+        char piattiLP[]={
+            '1',')','P','i','a','d','i','n','a',' ','C','r','u','d','o',' ','e',' ','S','q','u','a','c','q','u','e','r','o','n','e',' ',' ',' ',' ',' ',' ',' ',' ',
+            '2',')','P','i','a','d','i','n','a',' ','C','o','t','t','o',' ','e',' ','F','o','n','t','i','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '3',')','P','i','a','d','i','n','a',' ','P','o','l','l','o',' ','G','r','i','g','l','i','a','t','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '4',')','P','i','a','d','i','n','a',' ','V','e','g','e','t','a','l','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '5',')','R','o','t','o','l','o',' ','N','u','t','e','l','l','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '6',')','B','i','b','i','t','a',' ','i','n',' ','L','a','t','t','i','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        };
+		
 	
     //variabili di dati utente(immagazzinano info sull'utente)
     	//menu nome
@@ -327,8 +348,25 @@ int main(){
                     
                      
 					case 3:
-						cout<<"Hai selezionato come ristorante Sushi Zen, cosa vuoi ordinare dal suo menù?"<<endl;
-						break;
+						pokeZen:
+                        cout<<"--- MENU POKE ZEN ---"<<endl;
+                        for(int i=0; i<6;i++){
+                            cout<<"#";
+                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiPZ[x];
+                            cout<<"| "; i++;
+                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiPZ[x];
+                            cout<<"#"<<endl;
+                        }
+                        cout<<"Piatto (0 esce) =>"; cin>>piattoScelto;
+                        if(piattoScelto==0) goto menuRistoranti;
+                        cout<<"Quantita' =>"; cin>>quantitaPiatto;
+                        for(int k=0; k<quantitaPiatto; k++){
+                            if(ultimaPosOccupataCarrello<15) carrello[ultimaPosOccupataCarrello++]=30+piattoScelto;
+                        }
+                        cout<<"Continui qui? (s/n): "; cin>>sceltaSN;
+                        if(sceltaSN=='s'||sceltaSN=='S') goto pokeZen; else goto menuRistoranti;
+                        break;
+
 					case 4:
 						mcDonalds:
 						cout<<"################################################################################"<<endl
@@ -401,6 +439,51 @@ int main(){
 								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
 							goto menuRistoranti;	
 						}
+                }
+                break;
+				case 5: // --- LA PIADINERIA ---
+                        laPiadineria:
+                        cout<<"--- MENU LA PIADINERIA ---"<<endl;
+                        for(int i=0; i<6;i++){
+                            cout<<"#";
+                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
+                            cout<<"| "; i++;
+                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
+                            cout<<"#"<<endl;
+                        }
+                        cout<<"Piatto (0 esce) =>"; cin>>piattoScelto;
+                        if(piattoScelto==0) goto menuRistoranti;
+                        cout<<"Quantita' =>"; cin>>quantitaPiatto;
+                        for(int k=0; k<quantitaPiatto; k++){
+                            if(ultimaPosOccupataCarrello<15) carrello[ultimaPosOccupataCarrello++]=50+piattoScelto;
+                        }
+                        cout<<"Continui qui? (s/n): "; cin>>sceltaSN;
+                        if(sceltaSN=='s'||sceltaSN=='S') goto laPiadineria; else goto menuRistoranti;
+                        break;
+			case 9: // SEZIONE CARRELLO 
+                        cout<<"--- RIEPILOGO CARRELLO ---"<<endl;
+                        if(ultimaPosOccupataCarrello==0) cout<<"Il carrello e' vuoto!"<<endl;
+                        for(int i=0; i<ultimaPosOccupataCarrello; i++){
+                            int id=carrello[i];
+                            cout<<i+1<<") ";
+                            if(id>10 && id<20){ // Super Kebab
+                                for(int x=(id-11)*dimPartizione; x<dimPartizione*((id-11)+1); x++) cout<<piattiSK[x];
+                            }
+                            else if(id>30 && id<40){ // Poke Zen
+                                for(int x=(id-31)*dimPartizione; x<dimPartizione*((id-31)+1); x++) cout<<piattiPZ[x];
+                            }
+                            else if(id>40 && id<50){ // McDonalds
+                                for(int x=(id-41)*dimPartizione; x<dimPartizione*((id-41)+1); x++) cout<<piattiMC[x];
+                            }
+                            else if(id>50 && id<60){ // La Piadineria
+                                for(int x=(id-51)*dimPartizione; x<dimPartizione*((id-51)+1); x++) cout<<piattiLP[x];
+                            }
+                            cout<<endl;
+                        }
+                        cout<<"Premi 0 per tornare ai ristoranti =>"; cin>>scelta;
+                        goto menuRistoranti;
+                        break;
+            }
 					/*
 						---------------------------------------------------------
 						@@@@@@@@@@@@@@@@@@@@ SEZIONE CARRELLO @@@@@@@@@@@@@@@@@@@
