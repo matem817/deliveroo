@@ -53,6 +53,7 @@ int main(){
 			'5',')','M','c','M','e','n','u',' ','D','o','u','b','l','e',' ','C','h','i','k','e','n',' ','B','B','Q',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 		};
+		float prezziarioMC[]={12.20,15.90,13.60,14.15,7.30,13.20};
 		char piattiSK[]={
         	'1',')','K','e','b','a','b',' ','C','o','m','p','l','e','t','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         	'2',')','P','i','a','d','i','n','a',' ','K','e','b','a','b',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
@@ -61,6 +62,8 @@ int main(){
       	  	'5',')','P','a','t','a','t','i','n','e',' ','F','r','i','t','t','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
       	  	'6',')','B','i','b','i','t','a',' ','a',' ','s','c','e','l','t','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         };
+		float prezziarioSK[]={12.00, 11.00, 7.00, 10.00, 6.00, 2.00};
+
 		
         int quantitaPiatto;
 	
@@ -76,6 +79,8 @@ int main(){
 		//ordini
 			int carrello[15], ultimaPosOccupataCarrello=-1;
 			int opzioniPiatti[15*3];
+			float costoItemCarrello[15];//costo di ogni item del carrello
+			float sovrapprezzoItem=0;//Da utilizzare per il sovraprezzo delle modifiche
 
 	//menu carrello
 		int totale, importo, resto; //si capisce no? dai
@@ -198,14 +203,16 @@ int main(){
                         for(int k=0; k<quantitaPiatto; k++){ 
                             if(ultimaPosOccupataCarrello<15){
 								ultimaPosOccupataCarrello++;
-								carrello[ultimaPosOccupataCarrello]=10+piattoScelto; 
+								carrello[ultimaPosOccupataCarrello]=10+piattoScelto;
+								costoItemCarrello[ultimaPosOccupataCarrello]=prezziarioMC[piattoScelto-1];
+
 								cout<<"Personalizzare il proprio menù"<<endl;
 								switch (piattoScelto){
 									case 1 ... 4:
 										cout<<"Scegliere la dimensione:"<<endl
-											<<"1-Grande"<<endl
-											<<"2-Medio"<<endl
-											<<"3-Piccolo"<<endl;
+											<<"1-Grande\t\t+3,00"<<endl
+											<<"2-Medio\t\t\t+2,90"<<endl
+											<<"3-Piccolo\t\t+0,00"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -216,9 +223,9 @@ int main(){
 										opzioniPiatti[ultimaPosOccupataCarrello*3]=scelta;
 
 										cout<<"Scegliere un contorno:"<<endl
-											<<"1-Patatine"<<endl
-											<<"2-Patate Piccanti"<<endl
-											<<"3-Nessuno"<<endl;
+											<<"1-Patatine\t\t+3,00"<<endl
+											<<"2-Patate Piccanti\t+3,50"<<endl
+											<<"3-Nessuno\t\t+0,00"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -229,9 +236,9 @@ int main(){
 										opzioniPiatti[ultimaPosOccupataCarrello*3+1]=scelta;
 
 										cout<<"Scegliere una bibita:"<<endl
-											<<"1-Acqua"<<endl
-											<<"2-CocaCola"<<endl
-											<<"3-Sprite"<<endl;
+											<<"1-Acqua\t\t\t+0,00"<<endl
+											<<"2-CocaCola\t\t+2,00"<<endl
+											<<"3-Sprite\t\t+1,70"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -243,9 +250,9 @@ int main(){
 										break;
 									case 5:
 										cout<<"Scegliere la dimensione:"<<endl
-											<<"1-Grande"<<endl
-											<<"2-Medio"<<endl
-											<<"3-Piccolo"<<endl;
+											<<"1-Grande\t\t+1,50"<<endl
+											<<"2-Medio\t\t\t+0,50"<<endl
+											<<"3-Piccolo\t\t+0,00"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -256,9 +263,9 @@ int main(){
 										opzioniPiatti[ultimaPosOccupataCarrello*3]=scelta;
 
 										cout<<"Scegliere una salsa da aggiungere:"<<endl
-											<<"1-Maionese"<<endl
-											<<"2-Ketchup"<<endl
-											<<"3-Nessuna"<<endl;
+											<<"1-Maionese\t\t+0,10"<<endl
+											<<"2-Ketchup\t\t+0,10"<<endl
+											<<"3-Nessuna\t\t+0,00"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -271,9 +278,9 @@ int main(){
 										break;
 									case 6:
 									cout<<"Scegliere la bibita:"<<endl
-											<<"1-Acqua"<<endl
-											<<"2-CocaCola"<<endl
-											<<"3-Sprite"<<endl;
+											<<"1-Acqua\t\t\t+0,00"<<endl
+											<<"2-CocaCola\t\t+0,00"<<endl
+											<<"3-Sprite\t\t+0,00"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -392,7 +399,11 @@ int main(){
 								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
 							goto menuRistoranti;	
 						}
-						
+					/*
+						---------------------------------------------------------
+						@@@@@@@@@@@@@@@@@@@@ SEZIONE CARRELLO @@@@@@@@@@@@@@@@@@@
+						---------------------------------------------------------
+					*/
 					case 9: // SEZIONE CARRELLO 
 						menuCarrello:
 						cout<<"--- CARRELLO ATTUALE ---"<<endl;
@@ -407,19 +418,19 @@ int main(){
 								cout<<"\tSuper Kebab"<<endl;
 								switch(p+1){
 									case 1 ... 4:
-										cout<<"\tDimensione: ";
+										cout<<"\tDimensione:\t";
 										switch(opzioniPiatti[i*3]){
 											case 1:
-												cout<<"Grande"<<endl;
+												cout<<"Grande\t\t+3,00"<<endl;
 												break;
 											case 2:
-												cout<<"Medio"<<endl;
+												cout<<"Medio\t\t\t+2,90"<<endl;
 												break;
 											case 3:
-												cout<<"Piccolo"<<endl;
+												cout<<"Piccolo\t\t+0,00"<<endl;
 												break;
 										}
-										cout<<"\tContorno: ";
+										cout<<"\tContorno:\t";
 										switch(opzioniPiatti[i*3+1]){
 											case 1:
 												cout<<"Patatine"<<endl;
@@ -431,7 +442,7 @@ int main(){
 												cout<<"Nessuno"<<endl;
 												break;
 										}
-										cout<<"\tBibita: ";
+										cout<<"\tBibita:\t\t";
 										switch(opzioniPiatti[i*3+1]){
 											case 1:
 												cout<<"Acqua"<<endl;
@@ -558,7 +569,7 @@ int main(){
 								cout<<"Confermi? Ovvio che si. "<<endl<<endl; //OVVIAMENTE DA MODIFICARE - AGGIUNGERE SCELTA, SE NON SI CONFERMA SI RIBUTTA AL MENU DEL CARRELLO
 								goto menuPrincipale; //ANCHE QUESTO E' TEMPORANEO - DOBBIAMO ACCORDARCI SE FAR CHIUDERE IL PROGRAMMA O SE RIPULIRE SEMPLICEMENTE TUTTO
 								break;
-							case 2:
+							case 2://Pop elementi dal carrello (povera cassiera)
 								cout<<"Quale ordine vuoi rimuovere(inserisci il suo numero, 0 per tornare indietro)?"<<endl;
 								cout<<"=>";
 								cin>>scelta;
@@ -568,15 +579,20 @@ int main(){
 									cin>>scelta;
 								}
 								if(scelta==0) goto menuCarrello;
+
 								scelta--;//decremento perche gli index vanno da 0 e non da 1
-								for(int i=scelta; i<15; i++){
+								for(int i=scelta; i<15; i++){//rimozione elemento da carrello
         							carrello[i]=carrello[i+1];
     							}
-								for(int x=0; x<3; x++){
+								for(int x=0; x<3; x++){//rimozione elemento da opzioni piatti (3 elementi)
 									for(int i=scelta*3; i<15; i++){
         								opzioniPiatti[i]=opzioniPiatti[i+1];
     								}
 								}
+								for(int i=scelta; i<15; i++){ //rimozione elementi da costoItemCarrello
+        							costoItemCarrello[i]=costoItemCarrello[i+1];
+    							}
+
 								ultimaPosOccupataCarrello--;//abbiamo liberato una posizione :D
 								goto menuCarrello;
 								break;
@@ -603,7 +619,7 @@ int main(){
 									,-" \  :      | :
 								( .-" \ `.__   | |
 									\__)  `.__,'  |__)  
-								GATTO DI BUONA FORTUNA PER QUESTO CODICE
+								GATTO DI BUONA FORTUNA PER QUESTO POVERO CODICE
 
 			*/
 			/*	
