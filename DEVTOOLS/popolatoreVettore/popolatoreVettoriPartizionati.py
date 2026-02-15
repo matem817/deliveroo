@@ -6,10 +6,8 @@ dimPartizione=38
 print("Inserire il numero di partizioni: ")
 numPartizioni=int(input())
 
-vettore=[""]*numPartizioni
-for i in range(numPartizioni):
-    print(f"Inserire il valore nella partizione {i}:")
-    vettore[i]=input()
+with open("input.txt", "r") as f:
+    vettore = f.readlines()
 
 print("{")
 for i in vettore:
