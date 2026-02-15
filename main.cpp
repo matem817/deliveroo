@@ -439,51 +439,28 @@ int main(){
 								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
 							goto menuRistoranti;	
 						}
-                }
-                break;
-				case 5: // --- LA PIADINERIA ---
-                        laPiadineria:
-                        cout<<"--- MENU LA PIADINERIA ---"<<endl;
-                        for(int i=0; i<6;i++){
-                            cout<<"#";
-                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
-                            cout<<"| "; i++;
-                            for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
-                            cout<<"#"<<endl;
-                        }
-                        cout<<"Piatto (0 esce) =>"; cin>>piattoScelto;
-                        if(piattoScelto==0) goto menuRistoranti;
-                        cout<<"Quantita' =>"; cin>>quantitaPiatto;
-                        for(int k=0; k<quantitaPiatto; k++){
-                            if(ultimaPosOccupataCarrello<15) carrello[ultimaPosOccupataCarrello++]=50+piattoScelto;
-                        }
-                        cout<<"Continui qui? (s/n): "; cin>>sceltaSN;
-                        if(sceltaSN=='s'||sceltaSN=='S') goto laPiadineria; else goto menuRistoranti;
-                        break;
-			case 9: // SEZIONE CARRELLO 
-                        cout<<"--- RIEPILOGO CARRELLO ---"<<endl;
-                        if(ultimaPosOccupataCarrello==0) cout<<"Il carrello e' vuoto!"<<endl;
-                        for(int i=0; i<ultimaPosOccupataCarrello; i++){
-                            int id=carrello[i];
-                            cout<<i+1<<") ";
-                            if(id>10 && id<20){ // Super Kebab
-                                for(int x=(id-11)*dimPartizione; x<dimPartizione*((id-11)+1); x++) cout<<piattiSK[x];
-                            }
-                            else if(id>30 && id<40){ // Poke Zen
-                                for(int x=(id-31)*dimPartizione; x<dimPartizione*((id-31)+1); x++) cout<<piattiPZ[x];
-                            }
-                            else if(id>40 && id<50){ // McDonalds
-                                for(int x=(id-41)*dimPartizione; x<dimPartizione*((id-41)+1); x++) cout<<piattiMC[x];
-                            }
-                            else if(id>50 && id<60){ // La Piadineria
-                                for(int x=(id-51)*dimPartizione; x<dimPartizione*((id-51)+1); x++) cout<<piattiLP[x];
-                            }
-                            cout<<endl;
-                        }
-                        cout<<"Premi 0 per tornare ai ristoranti =>"; cin>>scelta;
-                        goto menuRistoranti;
-                        break;
-            }
+					
+					break;
+					case 5: // --- LA PIADINERIA ---
+						laPiadineria:
+						cout<<"--- MENU LA PIADINERIA ---"<<endl;
+						for(int i=0; i<6;i++){
+							cout<<"#";
+							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
+							cout<<"| "; i++;
+							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
+							cout<<"#"<<endl;
+						}
+						cout<<"Piatto (0 esce) =>"; cin>>piattoScelto;
+						if(piattoScelto==0) goto menuRistoranti;
+						cout<<"Quantita' =>"; cin>>quantitaPiatto;
+						for(int k=0; k<quantitaPiatto; k++){
+							if(ultimaPosOccupataCarrello<15) carrello[ultimaPosOccupataCarrello++]=50+piattoScelto;
+						}
+						cout<<"Continui qui? (s/n): "; cin>>sceltaSN;
+						if(sceltaSN=='s'||sceltaSN=='S') goto laPiadineria; else goto menuRistoranti;
+						break;
+					
 					/*
 						---------------------------------------------------------
 						@@@@@@@@@@@@@@@@@@@@ SEZIONE CARRELLO @@@@@@@@@@@@@@@@@@@
@@ -567,15 +544,15 @@ int main(){
 										cout<<"\tSalsa: ";
 										switch(opzioniPiatti[i*3+1]){
 											case 1:
-												cout<<"Maionese\t\t+0.10"<<endl;
+												cout<<"Maionese\t\t\t+0.10"<<endl;
 												sovrapprezzoItem+=0.1;
 												break;
 											case 2:
-												cout<<"Ketchup\t\t+0.10"<<endl;
+												cout<<"Ketchup\t\t\t+0.10"<<endl;
 												sovrapprezzoItem+=0.1;
 												break;
 											case 3:
-												cout<<"Nessuna\t\t+0.00"<<endl;
+												cout<<"Nessuna\t\t\t+0.00"<<endl;
 												break;
 										}
 										break;
@@ -707,7 +684,8 @@ int main(){
 								goto menuPrincipale;
                 		}
 					}
-			break;
+					
+				break;//chiude menu ristoranti
 					
 			/*
 												 |\ /\
