@@ -721,7 +721,7 @@ int main(){
 									\                 /___,-.
 									`,    ,_____|  ;'_____,'
 									,-" \  :      | :
-								( .-" \ `.__   | |
+						     	   ( .-" \ `.__   | |
 									\__)  `.__,'  |__)  
 								GATTO DI BUONA FORTUNA PER QUESTO POVERO CODICE
 
