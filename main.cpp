@@ -14,6 +14,8 @@ TODO:
 		1) concludere l'ordine e pagare
 		2) tornare al menu dei ristoranti
 		3) tornare al menu principale
+
+	AGGIUNGERE MODIFICHE PIATTI PER MCDONALDS
 		
 	AGGIUNGERE UN SISTEMA PER PULIRE LO SCHERMO DOPO OGNI MENU(stampare una IMMANE quantità di endl)
 	
@@ -424,39 +426,43 @@ int main(){
 										cout<<"\tDimensione:\t";
 										switch(opzioniPiatti[i*3]){
 											case 1:
-												cout<<"Grande\t\t+3,00"<<endl;
+												cout<<"Grande\t\t+3.00"<<endl;
 												sovrapprezzoItem+=3;
 												break;
 											case 2:
-												cout<<"Medio\t\t\t+2,90"<<endl;
+												cout<<"Medio\t\t+2.90"<<endl;
 												sovrapprezzoItem+=2.9;												
 												break;
 											case 3:
-												cout<<"Piccolo\t\t+0,00"<<endl;
+												cout<<"Piccolo\t\t+0.00"<<endl;
 												break;
 										}
 										cout<<"\tContorno:\t";
 										switch(opzioniPiatti[i*3+1]){
 											case 1:
-												cout<<"Patatine"<<endl;
+												cout<<"Patatine\t+3.00"<<endl;
+												sovrapprezzoItem+=3;
 												break;
 											case 2:
-												cout<<"Patate Piccanti"<<endl;
+												cout<<"Patate Piccanti\t+3.50"<<endl;
+												sovrapprezzoItem+=3.50;
 												break;
 											case 3:
-												cout<<"Nessuno"<<endl;
+												cout<<"Nessuno\t\t+0.00"<<endl;
 												break;
 										}
 										cout<<"\tBibita:\t\t";
 										switch(opzioniPiatti[i*3+1]){
 											case 1:
-												cout<<"Acqua"<<endl;
+												cout<<"Acqua\t\t+0.00"<<endl;
 												break;
 											case 2:
-												cout<<"Acqua"<<endl;
+												cout<<"CocaCola\t+2.00"<<endl;
+												sovrapprezzoItem+=2;
 												break;
 											case 3:
-												cout<<"Sprite"<<endl;
+												cout<<"Sprite\t\t+1.70"<<endl;
+												sovrapprezzoItem+=1.70;
 												break;
 										}
 										break;
@@ -464,25 +470,29 @@ int main(){
 										cout<<"\tDimensione: ";
 										switch(opzioniPiatti[i*3]){
 											case 1:
-												cout<<"Grande"<<endl;
+												cout<<"Grande\t\t+1.50"<<endl;
+												sovrapprezzoItem+=1.5;
 												break;
 											case 2:
-												cout<<"Medio"<<endl;
+												cout<<"Medio\t\t\t+0.50"<<endl;
+												sovrapprezzoItem+=0.5;
 												break;
 											case 3:
-												cout<<"Piccolo"<<endl;
+												cout<<"Piccolo\t\t+0.00"<<endl;
 												break;
 										}
 										cout<<"\tSalsa: ";
 										switch(opzioniPiatti[i*3+1]){
 											case 1:
-												cout<<"Maionese"<<endl;
+												cout<<"Maionese\t\t+0.10"<<endl;
+												sovrapprezzoItem+=0.1;
 												break;
 											case 2:
-												cout<<"Ketchup"<<endl;
+												cout<<"Ketchup\t\t+0.10"<<endl;
+												sovrapprezzoItem+=0.1;
 												break;
 											case 3:
-												cout<<"Nessuna"<<endl;
+												cout<<"Nessuna\t\t+0.00"<<endl;
 												break;
 										}
 										break;
@@ -502,10 +512,11 @@ int main(){
 										break;
 								}
 								costoItemCarrello[i]+=sovrapprezzoItem;
+								sovrapprezzoItem=0;
 								cout<<"\t\t\t\tTOTALE\t"<<costoItemCarrello[i];
-								if(int(prezziarioSK[p])==prezziarioSK[p]) cout<<".00"<<endl;
+								if((costoItemCarrello[i]-int(costoItemCarrello[i]))==0) cout<<".00"<<endl;
 								else cout<<"0"<<endl;
-
+								cout<<endl;
 							}
 							if(id>40 && id<50){ // Piatti McDonalds (41-46)
 								int p=id-41;
