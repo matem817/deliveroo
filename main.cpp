@@ -204,7 +204,7 @@ int main(){
                             if(ultimaPosOccupataCarrello<15){
 								ultimaPosOccupataCarrello++;
 								carrello[ultimaPosOccupataCarrello]=10+piattoScelto;
-								costoItemCarrello[ultimaPosOccupataCarrello]=prezziarioMC[piattoScelto-1];
+								costoItemCarrello[ultimaPosOccupataCarrello]=prezziarioSK[piattoScelto-1];
 
 								cout<<"Personalizzare il proprio menù"<<endl;
 								switch (piattoScelto){
@@ -407,7 +407,7 @@ int main(){
 					case 9: // SEZIONE CARRELLO 
 						menuCarrello:
 						cout<<"--- CARRELLO ATTUALE ---"<<endl;
-						cout<<"PRODOTTO\t\t\t\tRISTORANTE"<<endl;
+						cout<<"PRODOTTO\t\t\t\tPREZZO"<<endl;
 						if(ultimaPosOccupataCarrello==-1) cout<<"Vuoto!"<<endl;
 						for(int i=0; i<ultimaPosOccupataCarrello+1; i++){
 							int id=carrello[i];
@@ -415,16 +415,21 @@ int main(){
 								int p=id-11;
 								cout<<i+1<<")";
 								for(int x=p*dimPartizione+2; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
-								cout<<"\tSuper Kebab"<<endl;
+								cout<<"\t"<<costoItemCarrello[i];
+								if(int(prezziarioSK[p])==prezziarioSK[p]) cout<<".00"<<endl;
+								else cout<<"0"<<endl;
+								sovrapprezzoItem=0;
 								switch(p+1){
 									case 1 ... 4:
 										cout<<"\tDimensione:\t";
 										switch(opzioniPiatti[i*3]){
 											case 1:
 												cout<<"Grande\t\t+3,00"<<endl;
+												sovrapprezzoItem+=3;
 												break;
 											case 2:
 												cout<<"Medio\t\t\t+2,90"<<endl;
+												sovrapprezzoItem+=2.9;												
 												break;
 											case 3:
 												cout<<"Piccolo\t\t+0,00"<<endl;
@@ -496,6 +501,11 @@ int main(){
 										}
 										break;
 								}
+								costoItemCarrello[i]+=sovrapprezzoItem;
+								cout<<"\t\t\t\tTOTALE\t"<<costoItemCarrello[i];
+								if(int(prezziarioSK[p])==prezziarioSK[p]) cout<<".00"<<endl;
+								else cout<<"0"<<endl;
+
 							}
 							if(id>40 && id<50){ // Piatti McDonalds (41-46)
 								int p=id-41;
