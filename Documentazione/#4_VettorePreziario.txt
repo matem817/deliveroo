@@ -1,0 +1,7 @@
+Il vettore prezziario contiene il prezzo di ciascun piatto per ogni ristorante, 
+il numero di ogni piatto meno 1 sarà l'indice del suo prezzo, per esempio:
+
+1)Kebab completo
+
+prezzo=prezziarioSK[1-1];
+

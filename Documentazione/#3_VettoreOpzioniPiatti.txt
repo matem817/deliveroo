@@ -29,30 +29,30 @@ Gli altri piatti saranno posti uno dietro l'altro.
 #### SUPER KEBAB ####
 da 1 a 4
     dimenisone 
-        grande
-        Medio
-        Piccolo
+        grande          +3.00
+        Medio           +2.90
+        Piccolo         +0.00
     contorno
-        Patatine
-        Patate Piccanti
-        Nessuno
+        Patatine        +3.00
+        Patate Piccanti +3.50
+        Nessuno         +0.00
     Bibita
-        Acqua
-        Acqua
-        Sprite
+        Acqua           +0.00
+        CocaCola        +2.00
+        Sprite          +1.70
 
 5:
     dimenisone 
-        grande
-        Medio
-        Piccolo
+        grande          +1.50
+        Medio           +0.50
+        Piccolo         +0.00
     salsa
-        Maionese
-        Ketchup
-        Nessuna
+        Maionese        +0.10
+        Ketchup         +0.10
+        Nessuna         +0.00
 
 6:
     Bibita
-        Acqua
-        CocaCola
-        Sprite
+        Acqua           +0.00
+        CocaCola        +0.00
+        Sprite          +0.00
