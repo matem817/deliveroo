@@ -4,16 +4,7 @@ RICORDATE:
 ~Cris
 TODO:
 	AGGIUNGERE ALTRI RISTORANTI CON I LORO PRODOTTI
-	AGGIUNGERE LA SEZIONE VISUALIZZA CARRELLO NEL MENU RISTORANTI
-		con rimozione item dal carrello
-		visualizzazione prezzi per il singolo item
-		scelta metodo di pagamento (il primo è il predefinito [COME CAZZO FAREMO BHO])
-			se in contanti specificare al rider quanti soldi si daranno
 	SUICIDARSI/kurt kobain pov
-	AGGIUNGERE nella visualizzazione del carrello le varie scelte
-		1) concludere l'ordine e pagare
-		2) tornare al menu dei ristoranti
-		3) tornare al menu principale
 
 	AGGIUNGERE MODIFICHE PIATTI PER MCDONALDS
 		
@@ -21,7 +12,7 @@ TODO:
 	
 COMPITI ATTUALI:
 	CRISTIAN: Personalizzazione piatti
-	MATTIA: menu carrello
+	MATTIA: 
 	ANDREA:
 COMMENTI:
 	bho
