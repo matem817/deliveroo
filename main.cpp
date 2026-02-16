@@ -37,18 +37,17 @@ int main(){
     //variabili di sistema (gestiscono il programma)
     bool esci=false, messaggiDEBUG=true;
     int posizioneUtente=0;
-    int sceltaMenuImpostazioni; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
-	int scelta; //variabile da usare per tutti i menù di scelta (Il suo valore non dovrà mai essere chiamato prima di cin>>scelta;)
+    int sceltaMenuImpostazioni=0; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
+	int scelta=0; //variabile da usare per tutti i menù di scelta (Il suo valore non dovrà mai essere chiamato prima di cin>>scelta;)
 	char sceltaSN='n';
 
 	//menu Ristoranti
     	int codiceRistorante=0;
-		int piattoScelto;
+		int piattoScelto=0;
 
-	//Dati Ristoranti (vedi Docs.txt #1)
+	//Dati Ristoranti (vedi Docs #1)
 		int dimPartizione=38;
-
-		float prezziarioMC[]={12.20,15.90,13.60,14.15,7.30,13.20};
+        int quantitaPiatto=0;
 
 		char piattiSL[]={
 			'1',')','P','o','k','e','\'',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
@@ -70,9 +69,6 @@ int main(){
         };
 		float prezziarioSK[]={12.00, 11.00, 7.00, 10.00, 6.00, 2.00};
 
-		
-        int quantitaPiatto;
-
 		char piattiMC[]={
 			'1',')','M','c','M','e','n','u',' ','G','r','a','n',' ','C','r','i','s','p','y',' ','M','c','B','a','c','o','n',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'2',')','2',' ','M','c','M','e','n','u',' ','L','a','r','g','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
@@ -81,6 +77,7 @@ int main(){
 			'5',')','M','c','M','e','n','u',' ','D','o','u','b','l','e',' ','C','h','i','k','e','n',' ','B','B','Q',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'6',')','M','c','M','e','n','u',' ','M','c','R','o','y','a','l',' ','D','e','l','u','x','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 		};
+		float prezziarioMC[]={12.20,15.90,13.60,14.15,7.30,13.20};
 
         char piattiPZ[]={
             '1',')','P','o','k','e',' ','S','a','l','m','o','n','e',' ','S','p','i','c','y',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
@@ -99,6 +96,7 @@ int main(){
             '5',')','R','o','t','o','l','o',' ','N','u','t','e','l','l','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
             '6',')','B','i','b','i','t','a',' ','i','n',' ','L','a','t','t','i','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         };
+
 		
 	
     //variabili di dati utente(immagazzinano info sull'utente)
@@ -177,19 +175,19 @@ int main(){
 					<<"# ++++++++++++++++++  ++++++++++++++++++  ++++++++++++++++++                   #"<<endl
 					<<"# 4) McDonalds        5) La piadineria    6) Da Graziella                      #"<<endl
 					<<"#                                                                              #"<<endl
-					<<"#  0) Menu iniziale                                   9) Visualizza carrello   #"<<endl
+					<<"#  0) Menu iniziale                                   8) Visualizza carrello   #"<<endl
 					<<"################################################################################"<<endl;
 				chiediInputRistorante:
 				cout<<"=>";
 				cin>>codiceRistorante;
-				if(codiceRistorante<0||codiceRistorante>9) {
+				if(codiceRistorante<0||codiceRistorante>8) {
 					cout<<"Selezione non valida riprovare\n";
 					goto chiediInputRistorante;
 				}
 				switch(codiceRistorante){
 					case 0:
 						goto menuPrincipale;
-					case 1:
+					case 1://SuperKebab
                         superKebab:
                         cout<<"################################################################################"<<endl
                             <<"#  ____  _   _ ____  _____ ____      _  _______ ____    _    ____              #"<<endl
@@ -353,11 +351,11 @@ int main(){
 							break;
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
-								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
-							goto menuRistoranti;	
+								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							goto menuCarrello;
 						}
                     
-                    case 2:
+                    case 2://SushiLine
 						sushiLine:
                         cout<<"################################################################################"<<endl
 							<<"# ____            _     _    _     _                                           #"<<endl
@@ -386,6 +384,12 @@ int main(){
                             <<"Selezionare la pietanza da aggiungere al carrello"<<endl
                             <<"=>";
                         cin>>piattoScelto;
+						if(piattoScelto==0) goto menuRistoranti;
+						while(piattoScelto<0||piattoScelto>6){
+                            cout<<"Selezione non valida riprovare"<<endl<<"=>";
+                            cin>>piattoScelto;
+                        }
+
 						cout<<"E stato scelto "<<endl;
 						for(int x=(piattoScelto-1)*dimPartizione; x<dimPartizione*(piattoScelto); x++) cout<<piattiSL[x];
 						cout<<endl;
@@ -419,18 +423,11 @@ int main(){
 							break;
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
-								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
-							goto menuRistoranti;	
+								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							goto menuCarrello;	
 						}
-
-                        if(piattoScelto==0) goto menuRistoranti;
-
-                        while(piattoScelto<0||piattoScelto>6){
-                            cout<<"Selezione non valida riprovare"<<endl<<"=>";
-                            cin>>piattoScelto;
-                        }
 						break;
-					case 3:
+					case 3: //PokeZen
 						pokeZen:
                         cout<<"--- MENU POKE ZEN ---"<<endl;
                         for(int i=0; i<6;i++){
@@ -450,7 +447,7 @@ int main(){
                         if(sceltaSN=='s'||sceltaSN=='S') goto pokeZen; else goto menuRistoranti;
                         break;
 
-					case 4:
+					case 4: //mcDonalds
 						mcDonalds:
 						cout<<"################################################################################"<<endl
 							<<"# __  __         ____                    _     _                               #"<<endl
@@ -519,37 +516,91 @@ int main(){
 							break;
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
-								<<"Sarai reindirizzato al menù ristoranti dove portrai concludere l'ordine"<<endl;
-							goto menuRistoranti;	
+								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							goto menuCarrello;
 						}
 					
-					break;
+						break;
 					case 5: // --- LA PIADINERIA ---
 						laPiadineria:
-						cout<<"--- MENU LA PIADINERIA ---"<<endl;
+						cout<<"################################################################################"<<endl
+							<<"# _             ____  _           _ _                 _                        #"<<endl
+							<<"#| |    __ _   |  _ \\(_) __ _  __| (_)_ __   ___ _ __(_) __ _                  #"<<endl
+							<<"#| |   / _` |  | |_) | |/ _` |/ _` | | '_ \\ / _ \\ '__| |/ _` |                 #"<<endl
+							<<"#| |__| (_| |  |  __/| | (_| | (_| | | | | |  __/ |  | | (_| |                 #"<<endl
+							<<"#|_____\\__,_|  |_|   |_|\\__,_|\\__,_|_|_| |_|\\___|_|  |_|\\__,_|                 #"<<endl
+							<<"#                                                                              #"<<endl
+							<<"#Consegna tra 10-25 minuti                                                     #"<<endl;
 						for(int i=0; i<6;i++){
+							cout<<"#------------------------------------------------------------------------------#"<<endl;
 							cout<<"#";
 							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
 							cout<<"| "; i++;
 							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiLP[x];
 							cout<<"#"<<endl;
 						}
-						cout<<"Piatto (0 esce) =>"; cin>>piattoScelto;
-						if(piattoScelto==0) goto menuRistoranti;
-						cout<<"Quantita' =>"; cin>>quantitaPiatto;
-						for(int k=0; k<quantitaPiatto; k++){
-							if(ultimaPosOccupataCarrello<15) carrello[ultimaPosOccupataCarrello++]=50+piattoScelto;
+						cout<<"#------------------------------------------------------------------------------#"<<endl;
+						for(int i=0; i<4; i++){
+							cout<<"#                                                                              #"<<endl;
 						}
-						cout<<"Continui qui? (s/n): "; cin>>sceltaSN;
-						if(sceltaSN=='s'||sceltaSN=='S') goto laPiadineria; else goto menuRistoranti;
+						cout<<"#                                                                              #"<<endl
+							<<"# 0) Menu Principale                                                           #"<<endl
+							<<"################################################################################"<<endl
+							<<"Selezionare la pietanza da aggiungere al carrello"<<endl
+							<<"=>";
+						cin>>piattoScelto;
+						while(piattoScelto<0||piattoScelto>6){
+							cout<<"Selezione non valida riprovare"<<endl
+								<<"=>";
+							cin>>piattoScelto;
+						}
+						if(piattoScelto==0) goto menuRistoranti;
+
+						cout<<"E stato scelto "<<endl;
+						for(int x=(piattoScelto-1)*dimPartizione; x<dimPartizione*(piattoScelto); x++) cout<<piattiLP[x];
+						cout<<endl;
+
+						cout<<"Quante unita' di questo piatto vuoi ordinare? ";
+                        cin>>quantitaPiatto;
+
+                        for(int k=0; k<quantitaPiatto; k++){
+                            if(ultimaPosOccupataCarrello<15){
+                                carrello[ultimaPosOccupataCarrello++]=50+piattoScelto; 
+                            } else {
+                                break; 
+                            }
+                        }
+						
+						cout<<endl<<"Aggiunto al carrello."<<endl;
+
+						if(ultimaPosOccupataCarrello<15){
+							cout<<"Vuoi ordinare qualcosaltro da La Piadineria?(S/n): ";
+							cin>>sceltaSN;
+							switch(sceltaSN){
+								case 'n':
+								case 'N':
+									goto menuRistoranti;
+									break;
+								default:
+									goto laPiadineria;
+							}
+						}else{
+							cout<<"Il tuo carrello è pieno!!!"<<endl
+								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							goto menuCarrello;
+;	
+						}
+					case 6://Da graziella
 						break;
-					
+					case 7://Easter Egg
+						break;
+
 					/*
 						---------------------------------------------------------
 						@@@@@@@@@@@@@@@@@@@@ SEZIONE CARRELLO @@@@@@@@@@@@@@@@@@@
 						---------------------------------------------------------
 					*/
-					case 9: // SEZIONE CARRELLO 
+					case 8: // SEZIONE CARRELLO 
 						menuCarrello:
 						cout<<"--- CARRELLO ATTUALE ---"<<endl;
 						cout<<"PRODOTTO\t\t\t\tPREZZO"<<endl;
