@@ -4,16 +4,7 @@ RICORDATE:
 ~Cris
 TODO:
 	AGGIUNGERE ALTRI RISTORANTI CON I LORO PRODOTTI
-	AGGIUNGERE LA SEZIONE VISUALIZZA CARRELLO NEL MENU RISTORANTI
-		con rimozione item dal carrello
-		visualizzazione prezzi per il singolo item
-		scelta metodo di pagamento (il primo è il predefinito [COME CAZZO FAREMO BHO])
-			se in contanti specificare al rider quanti soldi si daranno
 	SUICIDARSI/kurt kobain pov
-	AGGIUNGERE nella visualizzazione del carrello le varie scelte
-		1) concludere l'ordine e pagare
-		2) tornare al menu dei ristoranti
-		3) tornare al menu principale
 
 	AGGIUNGERE MODIFICHE PIATTI PER MCDONALDS
 		
@@ -21,7 +12,7 @@ TODO:
 	
 COMPITI ATTUALI:
 	CRISTIAN: Personalizzazione piatti
-	MATTIA: menu carrello
+	MATTIA: 
 	ANDREA:
 COMMENTI:
 	bho
@@ -115,7 +106,7 @@ int main(){
 			float sovrapprezzoItem=0;//Da utilizzare per il sovraprezzo delle modifiche
 
 	//menu carrello
-		int totale, importo, resto; //si capisce no? dai
+		int totale=0, importo, resto; //si capisce no? dai
 		char indirizzoConsegna[150];
 
     //APP
@@ -733,16 +724,31 @@ int main(){
 
 						switch(scelta){
 							case 1: //ordina e paga
-								cout<<"Dovrai pagare un totale di "<<totale<<" euro"<<endl
+								cout<<"Dovrai pagare un totale di ";
+									for(int i=0; i<15; i++){
+										if(costoItemCarrello[i]==0) break;
+										totale=totale+costoItemCarrello[i];
+									}
+								cout<<totale<<" euro"<<endl
 									<<"Pagherai tramite: ";
 								switch(metodoPagamentoPreferito){
 									case 0:
 										cout<<"contanti."<<endl
 											<<"Inserisci l'importo che consegnerai al rider per il calcolo del resto: ";
 										cin>>importo;
-										if(importo==0) break;
-										cout<<"Riceverai "<<resto<<" euro di resto";
+										do{
+											cout<<"L'importo non puo' essere minore o uguale a 0! Reinserire l'importo: ";
+											cin>>importo;
+										}while(importo<=0);
+										do{
+											cout<<"L'importo non puo' essere minore del totale! Reinserire l'importo: ";
+											cin>>importo;
+										}while(importo<totale);
+
+										resto=importo-totale;
+										cout<<"Riceverai "<<resto<<" euro di resto"<<endl;
 										break;
+									
 									case 1:
 										cout<<"carta. "<<endl<<"Verifica se le informazioni sono corrette: "<<endl
 											<<"	Nome e Cognome sulla carta: ";
@@ -755,11 +761,16 @@ int main(){
 													if(cognomeCarta[i]=='0') break;
 													cout<<cognomeCarta[i];
 												}
-											cout<<endl;
-												for(int i=0; i<16; i++){									
-													cout<<cartaCredito[i];
-													if(i==4 or i==8 or i==12) cout<<"-";
+											cout<<endl
+												<<"	Numero carta: ";
+												for(int j=0; j<3;j++){
+													for(int i=0; i<4;i++) cout<<"*";
+													cout<<"-";
 												}
+												for(int i=12; i<16; i++){									
+													cout<<cartaCredito[i];
+												}
+										cout<<endl;
 										break;
 									case 2:
 										cout<<"PayPal. Verifica se le informazioni sono corrette. "<<endl
@@ -781,12 +792,45 @@ int main(){
 									if(indirizzoConsegna[i]=='0') break;
 								}
 								
-								cout<<"Riepilogo ordine: "<<endl //DA COMPLETARE
-									<<"BLA BLA BLA"<<endl;
+								cout<<endl<<"Confermi l'ordine? Verifica le informazioni inserite prima di confermare. (S/N)"<<endl
+									<<"Metodo di pagamento: ";
+									switch(metodoPagamentoPreferito){
+										case 0:
+											cout<<"contanti"<<endl
+												<<"Consegnerai "<<importo<<" euro al rider e riceverai "<<resto<<" euro di resto";
+											break;
+										case 1:
+											cout<<"carta di credito."<<endl
+												<<"Verifica sopra se le informazioni della carta sono corrette.";
+											break;
+										case 2:
+											cout<<"PayPal."<<endl
+												<<"Verifica sopra se le informazioni dell'account PayPal sono corrette.";
+											break;
+										case 3:
+											cout<<"Gold Card."<<endl
+												<<"Nuovo totale: "<<totale<<" euro";
+											break;
+									}
+								cout<<endl<<"Indirizzo di consegna: ";
+								for(int i=0; i<150; i++){
+									if(indirizzoConsegna[i]=='0') break;
+									cout<<indirizzoConsegna[i];
+								}
 
-								cout<<"Confermi? Ovvio che si. "<<endl<<endl; //OVVIAMENTE DA MODIFICARE - AGGIUNGERE SCELTA, SE NON SI CONFERMA SI RIBUTTA AL MENU DEL CARRELLO
-								goto menuPrincipale; //ANCHE QUESTO E' TEMPORANEO - DOBBIAMO ACCORDARCI SE FAR CHIUDERE IL PROGRAMMA O SE RIPULIRE SEMPLICEMENTE TUTTO
+								cout<<endl<<"=> ";
+								cin>>sceltaSN;
+								switch(sceltaSN){
+									case 's':
+									case 'S':
+										cout<<"Il tuo ordine e' in arrivo! Grazie per aver utilizzato Deliveroo!"<<endl<<endl;;
+										break;
+									case 'n':
+									case 'N':
+										goto menuCarrello;
+								}
 								break;
+							
 							case 2://Pop elementi dal carrello (povera cassiera)
 								cout<<"Quale ordine vuoi rimuovere(inserisci il suo numero, 0 per tornare indietro)?"<<endl;
 								cout<<"=>";
@@ -900,8 +944,8 @@ int main(){
 									}
 								cout<<endl
 									<<"	Carta di credito: ";
-                                    for(int j=0; j<4;j++){
-                                        for(int i=0; i<5;i++) cout<<"*";
+                                    for(int j=0; j<3;j++){
+                                        for(int i=0; i<4;i++) cout<<"*";
                                         cout<<"-";
                                     }
 									for(int i=12; i<16; i++){									
