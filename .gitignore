@@ -4,3 +4,5 @@ app
 build/Debug/main.o
 build/Debug/outDebug
 main
+DEVTOOLS/popolatoreVettore/input.txt
+DEVTOOLS/PythonASCII/input.txt
