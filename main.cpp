@@ -104,11 +104,19 @@ int main(){
 			int opzioniPiatti[15*3];
 			float costoItemCarrello[15];//costo di ogni item del carrello
 			float sovrapprezzoItem=0;//Da utilizzare per il sovraprezzo delle modifiche
-
+			int piatto; //utilizzato per mostrare le personalizzazioni dei piatti
 	//menu carrello
-		int totale=0, importo, resto; //si capisce no? dai
+		float totale=0, importo=0, resto=0; //si capisce no? dai
 		char indirizzoConsegna[150];
 
+	//initializzazioni vettori
+	for(int i=0; i<15;i++){
+		carrello[i]=0;
+		costoItemCarrello[i]=0;
+	}
+	for(int i=0; i<15*3;i++){
+		opzioniPiatti[i]=0;
+	}
     //APP
     while(!esci){
 		
@@ -390,7 +398,49 @@ int main(){
 
                         for(int k=0; k<quantitaPiatto; k++){
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[ultimaPosOccupataCarrello++]=20+piattoScelto; 
+								ultimaPosOccupataCarrello++;
+                                carrello[ultimaPosOccupataCarrello]=20+piattoScelto;
+								costoItemCarrello[ultimaPosOccupataCarrello]=prezziarioSL[piattoScelto-1];
+								if(piattoScelto==1){
+									cout<<"Scegliere la base del poke':"<<endl
+										<<"1 - Riso Bianco"<<endl
+										<<"2 - Riso Integrale"<<endl;
+									cout<<"=>";
+									cin>>scelta;
+									while(scelta!=1 and scelta!=2){
+										cout<<"Opzione invalida, riprovare."<<endl
+										<<"=>";
+										cin>>scelta;
+									}
+									opzioniPiatti[ultimaPosOccupataCarrello*3]=scelta;
+
+									cout<<"Scegli le proteine:"<<endl
+										<<"1 - Salmone"<<endl
+										<<"2 - Tonno\t\t+0.50"<<endl
+										<<"3 - Tofu Marinato"<<endl;
+										cout<<"=>";
+									cin>>scelta;
+									while(scelta<1 or scelta>3){
+										cout<<"Opzione invalida, riprovare."<<endl
+										<<"=>";
+										cin>>scelta;
+									}
+									opzioniPiatti[ultimaPosOccupataCarrello*3+1]=scelta;
+
+									cout<<"Scegli un topping:"<<endl
+										<<"1 - Avocado\t\t+1.00"<<endl
+										<<"2 - Cetriolo"<<endl
+										<<"3 - Carote Juliane"<<endl;
+										cout<<"=>";
+									cin>>scelta;
+									while(scelta<1 or scelta>3){
+										cout<<"Opzione invalida, riprovare."<<endl
+										<<"=>";
+										cin>>scelta;
+									}
+									opzioniPiatti[ultimaPosOccupataCarrello*3+2]=scelta;
+
+								}
                             } else {
                                 break; 
                             }
@@ -579,7 +629,6 @@ int main(){
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
 							goto menuCarrello;
-;	
 						}
 					case 6://Da graziella
 						break;
@@ -600,14 +649,14 @@ int main(){
 							int id=carrello[i];
 							switch(id){
 								case 11 ... 16: // Piatti Super Kebab (11-16)
-									int p=id-11;
+									piatto=id-11;
 									cout<<i+1<<")";
-									for(int x=p*dimPartizione+2; x<dimPartizione*(p+1); x++) cout<<piattiSK[x];
+									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiSK[x];
 									cout<<"\t"<<costoItemCarrello[i];
-									if(int(prezziarioSK[p])==prezziarioSK[p]) cout<<".00"<<endl;
+									if(int(prezziarioSK[piatto])==prezziarioSK[piatto]) cout<<".00"<<endl;
 									else cout<<"0"<<endl;
 									sovrapprezzoItem=0;
-									switch(p+1){
+									switch(piatto+1){
 										case 1 ... 4:
 											cout<<"\tDimensione:\t";
 											switch(opzioniPiatti[i*3]){
@@ -697,22 +746,78 @@ int main(){
 											}
 											break;
 									}
-									costoItemCarrello[i]+=sovrapprezzoItem;
-									sovrapprezzoItem=0;
-									cout<<"\t\t\t\tTOTALE\t"<<costoItemCarrello[i];
-									if((costoItemCarrello[i]-int(costoItemCarrello[i]))==0) cout<<".00"<<endl;
+									break;
+								case 21 ... 26:
+									piatto=id-21;
+									cout<<i+1<<")";
+									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiSL[x];
+									cout<<"\t"<<costoItemCarrello[i];
+									if(int(prezziarioSL[piatto])==prezziarioSL[piatto]) cout<<".00"<<endl;
 									else cout<<"0"<<endl;
-									cout<<endl;
-								
-								
-								if(id>40 && id<50){ // Piatti McDonalds (41-46)
-									int p=id-41;
+									sovrapprezzoItem=0;
+									if(piatto==0){
+										cout<<"\tBase: ";
+										switch(opzioniPiatti[i*3]){
+											case 1:
+												cout<<"Riso bianco.\t\t+0.00"<<endl;
+												break;
+											case 2:
+												cout<<"Riso integrale\t\t+0.00"<<endl;
+												break;
+										}
+										cout<<"\tProteine: ";
+										switch(opzioniPiatti[i*3+1]){
+											case 1:
+												cout<<"Salmone\t\t+0.00";
+												break;
+											case 2:
+												cout<<"Tonno\t\t\t+0.50";
+												sovrapprezzoItem+=0.50;
+												break;
+											case 3:
+												cout<<"Tofu Marinato\t\t+0.00";
+												break;
+										}
+										cout<<endl;
+										cout<<"\tTopping: ";
+										switch(opzioniPiatti[i*3+2]){
+											case 1:
+												cout<<"Avocado\t\t+1.00";
+												sovrapprezzoItem+=1;
+												break;
+											case 2:
+												cout<<"Cetriolo\t\t+0.00";
+												break;
+											case 3:
+												cout<<"Carote\t\t\t+0.00";
+												break;
+										}
+										cout<<endl;
+									}
+									break;
+
+								case 41 ... 46: // Piatti McDonalds (41-46)
+									piatto=id-41;
 									cout<<"- ";
-									for(int x=p*dimPartizione+2; x<dimPartizione*(p+1); x++) cout<<piattiMC[x];
+									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiMC[x];
 									cout<<"\tMcDonalds"<<endl;
-								}
+								
 							}
+							costoItemCarrello[i]+=sovrapprezzoItem;
+							sovrapprezzoItem=0;
+							cout<<"\t\t\t\tTOTALE\t"<<costoItemCarrello[i];
+							if((costoItemCarrello[i]-int(costoItemCarrello[i]))==0) cout<<".00"<<endl;
+							else cout<<"0"<<endl;
+							cout<<endl;
 						}
+						totale=0;
+						for(int i=0; i<15; i++){
+							if(costoItemCarrello[i]==0) break;
+							totale=totale+costoItemCarrello[i];
+						}
+						cout<<"\tTOTALE CARRELLO: "<<totale;
+						if((totale-int(totale))==0) cout<<".00"<<endl;
+						else cout<<"0"<<endl;
 						cout<<endl;
 						cout<<"Scegli una tra le seguenti opzioni: "<<endl
 							<<"1 - Ordina e paga"<<endl
@@ -725,10 +830,6 @@ int main(){
 						switch(scelta){
 							case 1: //ordina e paga
 								cout<<"Dovrai pagare un totale di ";
-									for(int i=0; i<15; i++){
-										if(costoItemCarrello[i]==0) break;
-										totale=totale+costoItemCarrello[i];
-									}
 								cout<<totale<<" euro"<<endl
 									<<"Pagherai tramite: ";
 								switch(metodoPagamentoPreferito){
@@ -736,14 +837,14 @@ int main(){
 										cout<<"contanti."<<endl
 											<<"Inserisci l'importo che consegnerai al rider per il calcolo del resto: ";
 										cin>>importo;
-										do{
+										while(importo<=0){
 											cout<<"L'importo non puo' essere minore o uguale a 0! Reinserire l'importo: ";
 											cin>>importo;
-										}while(importo<=0);
-										do{
+										}
+										while(importo<totale){
 											cout<<"L'importo non puo' essere minore del totale! Reinserire l'importo: ";
 											cin>>importo;
-										}while(importo<totale);
+										}
 
 										resto=importo-totale;
 										cout<<"Riceverai "<<resto<<" euro di resto"<<endl;
