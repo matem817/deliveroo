@@ -78,7 +78,7 @@ int main(){
             '5',')','Z','u','p','p','a',' ','d','i',' ','M','i','s','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
             '6',')','A','c','q','u','a',' ','N','a','t','u','r','a','l','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         };
-
+		float prezziarioPZ[]={10.50, 11.00, 9.00, 5.50, 4.00, 2.50};
         char piattiLP[]={
             '1',')','P','i','a','d','i','n','a',' ','C','r','u','d','o',' ','e',' ','S','q','u','a','c','q','u','e','r','o','n','e',' ',' ',' ',' ',' ',' ',' ',' ',
             '2',')','P','i','a','d','i','n','a',' ','C','o','t','t','o',' ','e',' ','F','o','n','t','i','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
@@ -87,6 +87,7 @@ int main(){
             '5',')','R','o','t','o','l','o',' ','N','u','t','e','l','l','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
             '6',')','B','i','b','i','t','a',' ','i','n',' ','L','a','t','t','i','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         };
+		float prezziarioLP[]={8.50, 8.00, 7.50, 6.50, 5.00, 2.00};
 		char piattiDG[]={
             '1',')','C','a','r','b','o','n','a','r','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
             '2',')','A','m','a','t','r','i','c','i','a','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
@@ -113,6 +114,7 @@ int main(){
 			int opzioniPiatti[15*3];
 			float costoItemCarrello[15];//costo di ogni item del carrello
 			float sovrapprezzoItem=0;//Da utilizzare per il sovraprezzo delle modifiche
+			float costoFinaleItemCarrello[15];
 			int piatto; //utilizzato per mostrare le personalizzazioni dei piatti
 	//menu carrello
 		float totale=0, importo=0, resto=0; //si capisce no? dai
@@ -122,6 +124,7 @@ int main(){
 	for(int i=0; i<15;i++){
 		carrello[i]=0;
 		costoItemCarrello[i]=0;
+		costoFinaleItemCarrello[i]=0;
 	}
 	for(int i=0; i<15*3;i++){
 		opzioniPiatti[i]=0;
@@ -519,12 +522,17 @@ int main(){
 
 						for(int k=0; k<quantitaPiatto; k++){
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[++ultimaPosOccupataCarrello]=30+piattoScelto; 
+								ultimaPosOccupataCarrello++;
+                                carrello[ultimaPosOccupataCarrello]=30+piattoScelto;
+								costoItemCarrello[ultimaPosOccupataCarrello]=prezziarioPZ[piattoScelto-1];
                             } else {
                                 break; 
                             }
                         }
-
+						cout << "Vuoi ordinare altro da PokeZen? (s/n): ";
+						cin >> sceltaSN;
+						if(sceltaSN == 's' || sceltaSN == 'S') goto pokeZen; 
+						else goto menuRistoranti;
                         break;
 
 					case 4: //mcDonalds
@@ -572,7 +580,9 @@ int main(){
 
                         for(int k=0; k<quantitaPiatto; k++){
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[++ultimaPosOccupataCarrello]=40+piattoScelto; 
+								ultimaPosOccupataCarrello++;
+                                carrello[ultimaPosOccupataCarrello]=40+piattoScelto;
+								costoItemCarrello[ultimaPosOccupataCarrello]=prezziarioMC[piattoScelto-1];
                             } else {
                                 break; 
                             }
@@ -645,12 +655,13 @@ int main(){
 
                         for(int k=0; k<quantitaPiatto; k++){
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[++ultimaPosOccupataCarrello]=50+piattoScelto; 
+								ultimaPosOccupataCarrello++;
+                                carrello[ultimaPosOccupataCarrello]=50+piattoScelto;
+								costoItemCarrello[ultimaPosOccupataCarrello]=prezziarioLP[piattoScelto-1];
                             } else {
                                 break; 
                             }
                         }
-						
 						cout<<endl<<"Aggiunto al carrello."<<endl;
 
 						if(ultimaPosOccupataCarrello<15){
@@ -732,6 +743,10 @@ int main(){
 						break;
 						break;
 					case 7://Easter Egg
+						cout<<"################################################################################"<<endl<<"#    _                                        _     _            _   _         #"<<endl<<"#   | |    ___   _ __ ___   ___ __ _  ___ ___| |__ (_)_ __   ___| |_| |_ ___   #"<<endl<<"#   | |   / _ \\ | '_ ` _ \\ / __/ _` |/ __/ __| '_ \\| | '_ \\ / _ \\ __| __/ _ \\  #"<<endl<<"#   | |__|  __/ | | | | | | (_| (_| | (_| (__| | | | | | | |  __/ |_| ||  __/  #"<<endl<<"#   |_____\\___| |_| |_| |_|\\___\\__,_|\\___\\___|_| |_|_|_| |_|\\___|\\__|\\__\\___|  #"<<endl<<"#                                                                              #"<<endl<<"#   |---|------------|                                                         #"<<endl<<"#   |   ||----------||                                                         #"
+						<<endl<<"#   |   ||[][][][][]||          Chiuso,                                        #"<<endl<<"#   |   ||[][][][][]||          ci scusiamo per il disagio ma                  #"<<endl<<"#   |   ||[][][][][]||          la preside sta girando nei corridoi !!!        #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||               0) ritorna al menu ristoranti             #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||----------||                                                         #"<<endl<<"#   |   ||          ||                                                         #"<<endl<<"#   |   ||----------||                                                         #"<<endl<<"#   |---|------------|                                                         #"<<endl<<"################################################################################"<<endl;
+						cout<<"=>";
+						goto menuRistoranti;
 						break;
 
 					/*
@@ -896,40 +911,41 @@ int main(){
 									break;
 								case 31 ... 36:
 									piatto=id-31;
-									cout<<"- ";
+									cout<<i+1<<")";
 									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiPZ[x];
 									cout<<endl;
 									break;
 								case 41 ... 46: // Piatti McDonalds (41-46)
 									piatto=id-41;
-									cout<<"- ";
+									cout<<i+1<<")";
 									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiMC[x];
 									cout<<endl;
+									break;
 								case 51 ... 56:
 									piatto=id-51;
-									cout<<"- ";
+									cout<<i+1<<")";
 									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiLP[x];
 									cout<<endl;
 									break;
 								case 61 ... 66:
 									piatto=id-61;
-									cout<<"- ";
+									cout<<i+1<<")";
 									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiDG[x];
 									cout<<endl;
 									break;
 								
 							}
-							costoItemCarrello[i]+=sovrapprezzoItem;
+							costoFinaleItemCarrello[i]=costoItemCarrello[i]+sovrapprezzoItem;
 							sovrapprezzoItem=0;
-							cout<<"\t\t\t\tTOTALE\t"<<costoItemCarrello[i];
-							if((costoItemCarrello[i]-int(costoItemCarrello[i]))==0) cout<<".00"<<endl;
+							cout<<"\t\t\t\tTOTALE\t"<<costoFinaleItemCarrello[i];
+							if((costoFinaleItemCarrello[i]-int(costoFinaleItemCarrello[i]))==0) cout<<".00"<<endl;
 							else cout<<"0"<<endl;
 							cout<<endl;
 						}
 						totale=0;
 						for(int i=0; i<15; i++){
-							if(costoItemCarrello[i]==0) break;
-							totale=totale+costoItemCarrello[i];
+							if(costoFinaleItemCarrello[i]==0) break;
+							totale=totale+costoFinaleItemCarrello[i];
 						}
 						cout<<"\tTOTALE CARRELLO: "<<totale;
 						if((totale-int(totale))==0) cout<<".00"<<endl;
@@ -1040,6 +1056,13 @@ int main(){
 								switch(sceltaSN){
 									case 's':
 									case 'S':
+										for(int i=0; i<15;i++){
+											carrello[i]=0;
+											costoItemCarrello[i]=0;
+										}
+										for(int i=0; i<15*3;i++){
+											opzioniPiatti[i]=0;
+										}
 										cout<<"Il tuo ordine e' in arrivo! Grazie per aver utilizzato Deliveroo!"<<endl<<endl;;
 										break;
 									case 'n':
@@ -1081,6 +1104,7 @@ int main(){
 							case 0:
 								goto menuPrincipale;
                 		}
+						
 					}
 					
 				break;//chiude menu ristoranti
@@ -1099,7 +1123,7 @@ int main(){
 									,-" \  :      | :
 						     	   ( .-" \ `.__   | |
 									\__)  `.__,'  |__)  
-								GATTO DI BUONA FORTUNA PER QUESTO POVERO CODICE
+								MICIO DI BUONA FORTUNA PER QUESTO POVERO CODICE
 
 			*/
 			/*	
@@ -1273,6 +1297,10 @@ int main(){
         }
         if(messaggiDEBUG) cout<<"DEBUG:Eseguito un ciclo\n";
         
-    	
+    	//qui giaceva una parentesi graffa che ruppe il codice per 12h. R.I.P.
 	}
 }
+/*
+Apena inizi a programmare, solo tu e Dio sapete come il programma funziona,
+dopo una settimana solo Dio lo sa. 
+*/
