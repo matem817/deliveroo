@@ -7,11 +7,11 @@
 
     //dichiarazioni a inizio programma
     int dimPartizione = 38;
-    char piattiMC[38*10];
+    char piattiMC[38*6];
     piattiMC={...}
 
     //Accesso al 3 piatto del mc:
-    for(int i=dimPartizione*3; i<dimPartizione*4; i++){
+    for(int i=dimPartizione*2; i<dimPartizione*3; i++){
         cout<<piattiMC[i];
     }
 

@@ -2,7 +2,7 @@
 with open("input.txt", "r") as f:
     lines = f.readlines()
 
-output=[]
+output:list[str] =[]
 for i in lines:
     y: str = ""
     for x,j in  enumerate(i):
