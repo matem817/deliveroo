@@ -87,6 +87,15 @@ int main(){
             '5',')','R','o','t','o','l','o',' ','N','u','t','e','l','l','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
             '6',')','B','i','b','i','t','a',' ','i','n',' ','L','a','t','t','i','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
         };
+		char piattiDG[]={
+            '1',')','C','a','r','b','o','n','a','r','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '2',')','A','m','a','t','r','i','c','i','a','n','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '3',')','C','a','c','i','o',' ','e',' ','P','e','p','e',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '4',')','G','r','i','c','i','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '5',')','P','o','l','p','e','t','t','e',' ','a','l',' ','S','u','g','o',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+            '6',')','T','i','r','a','m','i','s','u','\'',' ','f','a','t','t','o',' ','i','n',' ','c','a','s','a',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
+        };
+        float prezziarioDG[]={12.00, 11.00, 10.00, 11.00, 13.00, 6.00};
 
 		
 	
@@ -470,22 +479,52 @@ int main(){
 						break;
 					case 3: //PokeZen
 						pokeZen:
-                        cout<<"--- MENU POKE ZEN ---"<<endl;
+                        cout<<"################################################################################"<<endl
+							<<"# ____       _    __    _____                                                  #"<<endl
+							<<"#|  _ \\ ___ | | __\\_\\  |__  /___ _ __                                          #"<<endl
+							<<"#| |_) / _ \\| |/ / _ \\   / // _ \\ '_ \\                                         #"<<endl
+							<<"#|  __/ (_) |   <  __/  / /|  __/ | | |                                        #"<<endl
+							<<"#|_|   \\___/|_|\\_\\___| /____\\___|_| |_|                                        #"<<endl
+							<<"#                                                                              #"<<endl
+							<<"#Consegna tra 10-25 minuti                                                     #"<<endl;
                         for(int i=0; i<6;i++){
+							cout << "#------------------------------------------------------------------------------#" << endl;
                             cout<<"#";
                             for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiPZ[x];
                             cout<<"| "; i++;
                             for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout<<piattiPZ[x];
                             cout<<"#"<<endl;
                         }
-                        cout<<"Piatto (0 esce) =>"; cin>>piattoScelto;
-                        if(piattoScelto==0) goto menuRistoranti;
-                        cout<<"Quantita' =>"; cin>>quantitaPiatto;
-                        for(int k=0; k<quantitaPiatto; k++){
-                            if(ultimaPosOccupataCarrello<15) carrello[ultimaPosOccupataCarrello++]=30+piattoScelto;
+						cout<<"#------------------------------------------------------------------------------#"<<endl;
+						for(int i=0; i<4; i++){
+							cout<<"#                                                                              #"<<endl;
+						}
+                        cout<<"# 0) Torna al menu Ristoranti                                                  #"<<endl
+                            <<"################################################################################"<<endl
+                            <<"Selezionare la pietanza da aggiungere al carrello"<<endl
+                            <<"=>";
+						cin>>piattoScelto;
+						if(piattoScelto==0) goto menuRistoranti;
+						while(piattoScelto<0||piattoScelto>6){
+                            cout<<"Selezione non valida riprovare"<<endl<<"=>";
+                            cin>>piattoScelto;
                         }
-                        cout<<"Continui qui? (s/n): "; cin>>sceltaSN;
-                        if(sceltaSN=='s'||sceltaSN=='S') goto pokeZen; else goto menuRistoranti;
+
+						cout<<"E stato scelto "<<endl;
+						for(int x=(piattoScelto-1)*dimPartizione; x<dimPartizione*(piattoScelto); x++) cout<<piattiPZ[x];
+						cout<<endl;
+
+						cout<<"Quante unita' di questo piatto vuoi ordinare? ";
+                        cin>>quantitaPiatto;
+
+						for(int k=0; k<quantitaPiatto; k++){
+                            if(ultimaPosOccupataCarrello<15){
+                                carrello[++ultimaPosOccupataCarrello]=30+piattoScelto; 
+                            } else {
+                                break; 
+                            }
+                        }
+
                         break;
 
 					case 4: //mcDonalds
@@ -533,7 +572,7 @@ int main(){
 
                         for(int k=0; k<quantitaPiatto; k++){
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[ultimaPosOccupataCarrello++]=40+piattoScelto; 
+                                carrello[++ultimaPosOccupataCarrello]=40+piattoScelto; 
                             } else {
                                 break; 
                             }
@@ -606,7 +645,7 @@ int main(){
 
                         for(int k=0; k<quantitaPiatto; k++){
                             if(ultimaPosOccupataCarrello<15){
-                                carrello[ultimaPosOccupataCarrello++]=50+piattoScelto; 
+                                carrello[++ultimaPosOccupataCarrello]=50+piattoScelto; 
                             } else {
                                 break; 
                             }
@@ -631,6 +670,66 @@ int main(){
 							goto menuCarrello;
 						}
 					case 6://Da graziella
+						daGraziella:
+						cout << "################################################################################" << endl
+								<< "#  ____    _        ____ ____      _    _____ ___ _____ _     _        _       #" << endl
+								<< "# |  _ \\  / \\      / ___|  _ \\    / \\   |__  |_ _| ____| |   | |      / \\      #" << endl
+								<< "# | | | |/ _ \\    | |  _| |_) |  / _ \\    / / | ||  _| | |   | |     / _ \\     #" << endl
+								<< "# | |_| / ___ \\   | |_| |  _ <  / ___ \\  / /_ | || |___| |___| |___ / ___ \\    #" << endl
+								<< "# |____/_/   \\_\\   \\____|_| \\_\\/_/   \\_\\/____|___|_____|_____|_____/_/   \\_\\   #" << endl
+								<< "#                                                                              #" << endl
+								<< "# Consegna tra 20-40 minuti                                                    #" << endl;
+
+						for(int i=0; i<6; i++){
+							cout << "#------------------------------------------------------------------------------#" << endl;
+							cout << "#";
+							// Stampa il primo piatto della coppia
+							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout << piattiDG[x];
+							cout << "| ";
+							i++; // Passa al secondo piatto della coppia
+							// Stampa il secondo piatto
+							for(int x=i*dimPartizione; x<dimPartizione*(i+1); x++) cout << piattiDG[x];
+							cout << "#" << endl;
+						}
+						
+						cout << "#------------------------------------------------------------------------------#" << endl;
+						for(int i=0; i<4; i++){
+							cout<<"#                                                                              #"<<endl;
+						}
+						cout << "# 0) Torna al menu Ristoranti                                                  #" << endl
+								<< "################################################################################" << endl
+								<< "Selezionare la pietanza da aggiungere al carrello" << endl
+								<< "=>";
+						cin >> piattoScelto;
+
+						if(piattoScelto == 0) goto menuRistoranti;
+
+						while(piattoScelto < 0 || piattoScelto > 6){
+							cout << "Selezione non valida riprovare" << endl << "=>";
+							cin >> piattoScelto;
+						}
+
+						cout << "Hai scelto: ";
+						for(int x=(piattoScelto-1)*dimPartizione; x<dimPartizione*(piattoScelto); x++) cout << piattiDG[x];
+						cout << endl;
+
+						cout << "Quante unita' vuoi ordinare? ";
+						cin >> quantitaPiatto;
+
+						for(int k=0; k<quantitaPiatto; k++){
+							if(ultimaPosOccupataCarrello < 14){
+								ultimaPosOccupataCarrello++;
+								carrello[ultimaPosOccupataCarrello] = 60 + piattoScelto; // Codice 60 per Da Graziella
+								costoItemCarrello[ultimaPosOccupataCarrello] = prezziarioDG[piattoScelto-1];
+							}
+						}
+
+						cout << "\nAggiunto al carrello!" << endl;
+						cout << "Vuoi ordinare altro da Graziella? (s/n): ";
+						cin >> sceltaSN;
+						if(sceltaSN == 's' || sceltaSN == 'S') goto daGraziella; 
+						else goto menuRistoranti;
+						break;
 						break;
 					case 7://Easter Egg
 						break;
@@ -687,7 +786,7 @@ int main(){
 													break;
 											}
 											cout<<"\tBibita:\t\t";
-											switch(opzioniPiatti[i*3+1]){
+											switch(opzioniPiatti[i*3+2]){
 												case 1:
 													cout<<"Acqua\t\t+0.00"<<endl;
 													break;
@@ -795,12 +894,29 @@ int main(){
 										cout<<endl;
 									}
 									break;
-
+								case 31 ... 36:
+									piatto=id-31;
+									cout<<"- ";
+									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiPZ[x];
+									cout<<endl;
+									break;
 								case 41 ... 46: // Piatti McDonalds (41-46)
 									piatto=id-41;
 									cout<<"- ";
 									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiMC[x];
-									cout<<"\tMcDonalds"<<endl;
+									cout<<endl;
+								case 51 ... 56:
+									piatto=id-51;
+									cout<<"- ";
+									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiLP[x];
+									cout<<endl;
+									break;
+								case 61 ... 66:
+									piatto=id-61;
+									cout<<"- ";
+									for(int x=piatto*dimPartizione+2; x<dimPartizione*(piatto+1); x++) cout<<piattiDG[x];
+									cout<<endl;
+									break;
 								
 							}
 							costoItemCarrello[i]+=sovrapprezzoItem;
@@ -976,7 +1092,7 @@ int main(){
 								 \ \             :    `-'   )
 								  \ \             \        ;
 								   \ \             `-.   ,'
-									\ \ ____________,'  (
+									\ \ ____________,'  ( JIACOMO
 									; '                ;
 									\                 /___,-.
 									`,    ,_____|  ;'_____,'
