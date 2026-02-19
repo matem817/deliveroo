@@ -14,7 +14,7 @@ using namespace std;
 
 int main(){
     //variabili di sistema (gestiscono il programma)
-    bool esci=false, messaggiDEBUG=true;
+    bool esci=false, messaggiDEBUG=false;
     int posizioneUtente=0;
     int sceltaMenuImpostazioni=0; //variabile utilizzata per lo switch del menu delle impostazioni dell'utente
 	int scelta=0; //variabile da usare per tutti i menù di scelta (Il suo valore non dovrà mai essere chiamato prima di cin>>scelta;)
@@ -91,6 +91,7 @@ int main(){
     //variabili di dati utente(immagazzinano info sull'utente)
     	//menu nome
 			char nome[30];
+			bool nomeInserito=false;
     	//menu metodoPagamento
 			int metodoPagamentoPreferito=0; //0: Contanti, 1: Carta di credito, 2: Paypal, 3: mangi gratis
 			int sceltaMenuPagamento;
@@ -734,6 +735,7 @@ int main(){
 						cout<<"################################################################################"<<endl<<"#    _                                        _     _            _   _         #"<<endl<<"#   | |    ___   _ __ ___   ___ __ _  ___ ___| |__ (_)_ __   ___| |_| |_ ___   #"<<endl<<"#   | |   / _ \\ | '_ ` _ \\ / __/ _` |/ __/ __| '_ \\| | '_ \\ / _ \\ __| __/ _ \\  #"<<endl<<"#   | |__|  __/ | | | | | | (_| (_| | (_| (__| | | | | | | |  __/ |_| ||  __/  #"<<endl<<"#   |_____\\___| |_| |_| |_|\\___\\__,_|\\___\\___|_| |_|_|_| |_|\\___|\\__|\\__\\___|  #"<<endl<<"#                                                                              #"<<endl<<"#   |---|------------|                                                         #"<<endl<<"#   |   ||----------||                                                         #"
 						<<endl<<"#   |   ||[][][][][]||          Chiuso,                                        #"<<endl<<"#   |   ||[][][][][]||          ci scusiamo per il disagio ma                  #"<<endl<<"#   |   ||[][][][][]||          la preside sta girando nei corridoi !!!        #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||               0) ritorna al menu ristoranti             #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||----------||                                                         #"<<endl<<"#   |   ||          ||                                                         #"<<endl<<"#   |   ||----------||                                                         #"<<endl<<"#   |---|------------|                                                         #"<<endl<<"################################################################################"<<endl;
 						cout<<"=>";
+						cin>>piattoScelto;
 						goto menuRistoranti;
 						break;
 
@@ -1012,7 +1014,40 @@ int main(){
 									cin>>indirizzoConsegna[i];
 									if(indirizzoConsegna[i]=='0') break;
 								}
-								
+								inserimentoNomeOrdine:
+								if(!nomeInserito){
+									cout<<"Inserisci il tuo nome (inserisci 0 e premi invio quando hai concluso): ";
+				                    for(int i=0; i<30; i++){
+				                        cin>>nome[i];
+				                        if(nome[i]=='0') break;
+				                    }
+									cout<<endl
+										<<"Il nome inserito è:";
+									for(int i=0; i<30; i++){
+										if(nome[i]=='0') break;
+										cout<<nome[i];
+									}
+									cout<<endl;
+								}else{
+									cout<<"Il nome inserito è:";
+									for(int i=0; i<30; i++){
+										if(nome[i]=='0') break;
+										cout<<nome[i];
+									}
+									cout<<endl;
+									cout<<"Confermi?(s/N)"<<endl
+										<<"=>";
+									cin>>sceltaSN;
+									switch(sceltaSN){
+										case 'S':
+										case 's':
+											break;
+										default:
+											nomeInserito=false;
+											goto inserimentoNomeOrdine;
+									}
+									
+								}
 								cout<<endl<<"Confermi l'ordine? Verifica le informazioni inserite prima di confermare. (S/N)"<<endl
 									<<"Metodo di pagamento: ";
 									switch(metodoPagamentoPreferito){
@@ -1038,7 +1073,7 @@ int main(){
 									if(indirizzoConsegna[i]=='0') break;
 									cout<<indirizzoConsegna[i];
 								}
-
+								
 								cout<<endl<<"=> ";
 								cin>>sceltaSN;
 								switch(sceltaSN){
@@ -1149,6 +1184,7 @@ int main(){
 							cout<<nome[i];
 						}
 						cout<<"."<<endl;
+						nomeInserito=true;
 						goto menuDatiPersonali;
                         break;
                     case 2://metodo di pagamento preferito
