@@ -118,6 +118,8 @@ int main(){
 	for(int i=0; i<15*3;i++){
 		opzioniPiatti[i]=0;
 	}
+
+
     //APP
     while(!esci){
 		
@@ -669,6 +671,32 @@ int main(){
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
 							goto menuCarrello;
 						}
+							/*
+							Non andartene docile in quella buona notte,
+							I vecchi dovrebbero bruciare e delirare quando cade il giorno;
+							Infuria, infuria, contro il morire della luce.
+
+							Benché i saggi sappiano che la tenebra è inevitabile,
+							visto che dalle loro azioni non scaturì alcun fulmine,
+							Non se ne vanno docili in quella buona notte,
+
+							Gli onesti, con l’ultima onda, gridando quanto fulgide
+							le loro deboli gesta danzerebbero in una verde baia,
+							S’infuriano, s’infuriano contro il morire della luce.
+
+							Gli impulsivi che il sole presero al volo e cantarono,
+							imparando troppo tardi d’averne afflitto il percorso,
+							Non se ne vanno docili in quella buona notte.
+
+							Gli austeri, in punto di morte, accorgendosi con vista cieca
+							che gli occhi spenti potevano gioire e brillare come meteore,
+							S’infuriano, s’infuriano contro il morire della luce.
+
+							E tu, padre mio, là sulla triste altura, ti prego,
+							Condannami o benedicimi, ora, con le tue lacrime furiose.
+							Non andartene docile in quella buona notte.
+							Infuriati, infuriati contro il morire della luce.
+							*/
 					case 6://Da graziella
 						daGraziella:
 						cout << "################################################################################" << endl
