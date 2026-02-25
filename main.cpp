@@ -122,7 +122,7 @@ int main(){
 
     //APP
     while(!esci){
-		
+		for(int i=0; i<50; i++) cout<<endl;
 		menuPrincipale:
 		cout<<"#####################################################"   <<endl
 		    <<"||@@@@  @@@@@ @     @ @   @ @@@@@ @@@@   @@@   @@@ ||"   <<endl
@@ -143,7 +143,7 @@ int main(){
 				cout<<"Selezione non valida riprovare\n";
 				goto chiediInput;
 			}
-
+		for(int i=0; i<50; i++) cout<<endl;
         switch (posizioneUtente){
 			case 0:
                 esci=true;
@@ -157,6 +157,7 @@ int main(){
 			*/
             case 1:
                 menuRistoranti:
+				for(int i=0; i<50; i++) cout<<endl;
 				cout<<"################################################################################"<<endl
 					<<"#                                                                              #"<<endl
 					<<"#  IN PRIMO PIANO                                                              #"<<endl
@@ -186,6 +187,7 @@ int main(){
 					cout<<"Selezione non valida riprovare\n";
 					goto chiediInputRistorante;
 				}
+				for(int i=0; i<50; i++) cout<<endl;
 				switch(codiceRistorante){
 					case 0:
 						goto menuPrincipale;
@@ -354,6 +356,8 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							cout<<"Premi enter per continuare..."<<endl;
+							cin>>scelta;
 							goto menuCarrello;
 						}
                     
@@ -462,12 +466,12 @@ int main(){
 								default:
 									goto sushiLine;
 							}
-
-							goto mcDonalds;
 							break;
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							cout<<"Premi enter per continuare..."<<endl;
+							cin>>scelta;
 							goto menuCarrello;	
 						}
 						break;
@@ -520,11 +524,25 @@ int main(){
                                 break; 
                             }
                         }
-						cout << "Vuoi ordinare altro da PokeZen? (s/n): ";
-						cin >> sceltaSN;
-						if(sceltaSN == 's' || sceltaSN == 'S') goto pokeZen; 
-						else goto menuRistoranti;
-                        break;
+						if(ultimaPosOccupataCarrello<15){
+							cout<<"Vuoi ordinare qualcosaltro da Poke zen?(S/n): ";
+							cin>>sceltaSN;
+							switch(sceltaSN){
+								case 'n':
+								case 'N':
+									goto menuRistoranti;
+									break;
+								default:
+									goto pokeZen;
+							}
+							break;
+						}else{
+							cout<<"Il tuo carrello è pieno!!!"<<endl
+								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							cout<<"Premi enter per continuare..."<<endl;
+							cin>>scelta;
+							goto menuCarrello;	
+						}
 
 					case 4: //mcDonalds
 						mcDonalds:
@@ -592,12 +610,12 @@ int main(){
 								default:
 									goto mcDonalds;
 							}
-
-							goto mcDonalds;
 							break;
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							cout<<"Premi enter per continuare..."<<endl;
+							cin>>scelta;
 							goto menuCarrello;
 						}
 					
@@ -669,6 +687,8 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							cout<<"Premi enter per continuare..."<<endl;
+							cin>>scelta;
 							goto menuCarrello;
 						}
 							/*
@@ -753,12 +773,24 @@ int main(){
 						}
 
 						cout << "\nAggiunto al carrello!" << endl;
-						cout << "Vuoi ordinare altro da Graziella? (s/n): ";
-						cin >> sceltaSN;
-						if(sceltaSN == 's' || sceltaSN == 'S') goto daGraziella; 
-						else goto menuRistoranti;
-						break;
-						break;
+						if(ultimaPosOccupataCarrello<15){
+							cout<<"Vuoi ordinare qualcosaltro da Graziella?(S/n): ";
+							cin>>sceltaSN;
+							switch(sceltaSN){
+								case 'n':
+								case 'N':
+									goto menuRistoranti;
+									break;
+								default:
+									goto daGraziella;
+							}
+						}else{
+							cout<<"Il tuo carrello è pieno!!!"<<endl
+								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
+							cout<<"Premi enter per continuare..."<<endl;
+							cin>>scelta;
+							goto menuCarrello;
+						}
 					case 7://Easter Egg
 						cout<<"################################################################################"<<endl<<"#    _                                        _     _            _   _         #"<<endl<<"#   | |    ___   _ __ ___   ___ __ _  ___ ___| |__ (_)_ __   ___| |_| |_ ___   #"<<endl<<"#   | |   / _ \\ | '_ ` _ \\ / __/ _` |/ __/ __| '_ \\| | '_ \\ / _ \\ __| __/ _ \\  #"<<endl<<"#   | |__|  __/ | | | | | | (_| (_| | (_| (__| | | | | | | |  __/ |_| ||  __/  #"<<endl<<"#   |_____\\___| |_| |_| |_|\\___\\__,_|\\___\\___|_| |_|_|_| |_|\\___|\\__|\\__\\___|  #"<<endl<<"#                                                                              #"<<endl<<"#   |---|------------|                                                         #"<<endl<<"#   |   ||----------||                                                         #"
 						<<endl<<"#   |   ||[][][][][]||          Chiuso,                                        #"<<endl<<"#   |   ||[][][][][]||          ci scusiamo per il disagio ma                  #"<<endl<<"#   |   ||[][][][][]||          la preside sta girando nei corridoi !!!        #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||               0) ritorna al menu ristoranti             #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||[][][][][]||                                                         #"<<endl<<"#   |   ||----------||                                                         #"<<endl<<"#   |   ||          ||                                                         #"<<endl<<"#   |   ||----------||                                                         #"<<endl<<"#   |---|------------|                                                         #"<<endl<<"################################################################################"<<endl;
@@ -976,7 +1008,12 @@ int main(){
 							<<"0 - Torna al menu principale"<<endl
 							<<"=> ";
 						cin>>scelta;
-
+						while(scelta>3 || scelta<0){
+							cout<<"Opzione non valida, riprovare"<<endl
+								<<"=> ";
+							cin>>scelta;
+						}
+						for(int i=0; i<50; i++) cout<<endl;
 						switch(scelta){
 							case 1: //ordina e paga
 								cout<<"Dovrai pagare un totale di ";
@@ -1036,13 +1073,18 @@ int main(){
 										totale=0;
 										break;
 								}
-
+								cout<<"Se vuoi cambiare metodo di pagamento digita 1, per continuare digita 0"<<endl;
+								cout<<"=>";
+								cin>>scelta;
+								if(scelta==1) goto menuPagamentoPreferito;
+								for(int i=0; i<50; i++) cout<<endl;
 								cout<<"Inserisci l'inidirizzo di consegna (inserisci 0 per concludere): ";
 								for(int i=0; i<150; i++){
 									cin>>indirizzoConsegna[i];
 									if(indirizzoConsegna[i]=='0') break;
 								}
 								inserimentoNomeOrdine:
+								for(int i=0; i<50; i++) cout<<endl;
 								if(!nomeInserito){
 									cout<<"Inserisci il tuo nome (inserisci 0 e premi invio quando hai concluso): ";
 				                    for(int i=0; i<30; i++){
@@ -1076,6 +1118,7 @@ int main(){
 									}
 									
 								}
+								for(int i=0; i<50; i++) cout<<endl;
 								cout<<endl<<"Confermi l'ordine? Verifica le informazioni inserite prima di confermare. (S/N)"<<endl
 									<<"Metodo di pagamento: ";
 									switch(metodoPagamentoPreferito){
@@ -1184,6 +1227,7 @@ int main(){
 			*/
             case 2: //menu dati personali utente
                 menuDatiPersonali:
+				for(int i=0; i<50; i++) cout<<endl;
 				cout<<endl<<"In questo menu puoi inserire i tuoi dati personali."<<endl
                 	<<"Scegli cosa fare tra le opzioni qua sotto: "<<endl
                 	<<"1 - Inserisci il nome da visualizzare quando esegui degli ordini."<<endl
@@ -1197,7 +1241,7 @@ int main(){
                     cout<<"Selezione non valida riprovare\n";
                     goto inputMenuImpostazioni;
                 }
-
+				for(int i=0; i<50; i++) cout<<endl;
                 switch(sceltaMenuImpostazioni){ //MENU IMPOSTAZIONI
                     case 1://Inserimento nome utente
                         cout<<"Inserisci il tuo nome (inserisci 0 e premi invio quando hai concluso): ";
@@ -1217,6 +1261,7 @@ int main(){
                         break;
                     case 2://metodo di pagamento preferito
                     	menuPagamentoPreferito:
+						for(int i=0; i<50; i++) cout<<endl;
                         cout<<endl
 						    <<"Metodo di pagamento attuale: ";
                     	switch(metodoPagamentoPreferito){ //output metodo di pagamento preferito
@@ -1272,7 +1317,7 @@ int main(){
                             cout<<"Selezione non valida riprovare\n";
                             goto inputMenuMetodoPagamento;
                         }
-						
+						for(int i=0; i<50; i++) cout<<endl;
 						switch(sceltaMenuPagamento){//Menu metodi di pagamento
 							case 1:
 								do{
@@ -1285,7 +1330,7 @@ int main(){
 										<<"=> ";
 									cin>>metodoPagamentoPreferito;
 								}while(metodoPagamentoPreferito>3 or metodoPagamentoPreferito<0);
-								
+								for(int i=0; i<50; i++) cout<<endl;
 								switch(metodoPagamentoPreferito){
 									case 0: //contanti
 										cout<<"Hai selezionato il pagamento con contanti."<<endl;
@@ -1299,16 +1344,25 @@ int main(){
 											if(cartaCredito[i]>9){
 												cout<<"Non possono esserci doppie cifre nel numero della carta di credito. Reinserisci l'ultimo numero: "<<endl;
 												i--;
+											}else if(cartaCredito[i]<0){
+												cout<<"Non possono esserci cifre negative nel numero della carta di credito. Reinserisci l'ultimo numero: "<<endl;
+												i--;
 											}
 										}
 										cout<<"Inserisci il CVV: ";
 										cin>>cvv;
-				                        
+										if(cvv<0) cout<<"Serio?? Codice di sicurezza negativo? broooooooooooo"<<endl;
+										while(cvv<0){
+											cout<<"=>";
+											cin>>cvv;
+										}
+				                        for(int i=0; i<50; i++) cout<<endl;
 										cout<<"Inserisci il nome sulla carta (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
 				                        for(int i=0; i<15; i++){
 				                            cin>>nomeCarta[i];
 				                            if(nomeCarta[i]=='0') break;
 				                        }
+										for(int i=0; i<50; i++) cout<<endl;
 				                        cout<<"Inserisci il cognome sulla carta (premi invio ad ogni lettera, inserisci 0 quando hai concluso): ";
 				                        for(int i=0; i<15; i++){
 				                            cin>>cognomeCarta[i];
@@ -1321,6 +1375,11 @@ int main(){
 										for (int i=0; i<30; i++){
 											cin>>utentePaypal[i];
 											if(utentePaypal[i] == '0') break;
+										}
+										cout<<"Ci prometti che sei tu? OuO"<<endl;
+										cout<<"Va bene :3!";
+										for(int i=0; i<50000; i++){
+											for(int y=0; y<30000; y++);
 										}
 										break;
 									case 3: //gold card
@@ -1353,6 +1412,6 @@ int main(){
 	}
 }
 /*
-Apena inizi a programmare, solo tu e Dio sapete come il programma funziona,
+Apena inizi a programmare, solo tu e Dio sapete come il codice funziona,
 dopo una settimana solo Dio lo sa. 
 */
