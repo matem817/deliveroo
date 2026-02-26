@@ -899,13 +899,13 @@ int main(){
 											cout<<"\tBibita: ";
 											switch(opzioniPiatti[i*3]){
 												case 1:
-													cout<<"Acqua"<<endl;
+													cout<<"Acqua\t\t\t+0.00"<<endl;
 													break;
 												case 2:
-													cout<<"CocaCola"<<endl;
+													cout<<"CocaCola\t\t+0.00"<<endl;
 													break;
 												case 3:
-													cout<<"Sprite"<<endl;
+													cout<<"Sprite\t\t\t+0.00"<<endl;
 													break;
 											}
 											break;
