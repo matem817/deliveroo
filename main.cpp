@@ -356,7 +356,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -470,7 +470,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;	
 						}
@@ -539,7 +539,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;	
 						}
@@ -614,7 +614,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -687,7 +687,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -787,7 +787,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -899,13 +899,13 @@ int main(){
 											cout<<"\tBibita: ";
 											switch(opzioniPiatti[i*3]){
 												case 1:
-													cout<<"Acqua"<<endl;
+													cout<<"Acqua\t\t\t+0.00"<<endl;
 													break;
 												case 2:
-													cout<<"CocaCola"<<endl;
+													cout<<"CocaCola\t\t+0.00"<<endl;
 													break;
 												case 3:
-													cout<<"Piccolo"<<endl;
+													cout<<"Sprite\t\t\t+0.00"<<endl;
 													break;
 											}
 											break;
