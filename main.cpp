@@ -248,7 +248,7 @@ int main(){
 										cout<<"Scegliere la dimensione:"<<endl
 											<<"1-Grande\t\t+3,00"<<endl
 											<<"2-Medio\t\t\t+2,90"<<endl
-											<<"3-Piccolo\t\t+0,00"<<endl;
+											<<"3-Piccolo"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -261,7 +261,7 @@ int main(){
 										cout<<"Scegliere un contorno:"<<endl
 											<<"1-Patatine\t\t+3,00"<<endl
 											<<"2-Patate Piccanti\t+3,50"<<endl
-											<<"3-Nessuno\t\t+0,00"<<endl;
+											<<"3-Nessuno"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -272,7 +272,7 @@ int main(){
 										opzioniPiatti[ultimaPosOccupataCarrello*3+1]=scelta;
 
 										cout<<"Scegliere una bibita:"<<endl
-											<<"1-Acqua\t\t\t+0,00"<<endl
+											<<"1-Acqua"<<endl
 											<<"2-CocaCola\t\t+2,00"<<endl
 											<<"3-Sprite\t\t+1,70"<<endl;
 										cout<<"=>";
@@ -288,7 +288,7 @@ int main(){
 										cout<<"Scegliere la dimensione:"<<endl
 											<<"1-Grande\t\t+1,50"<<endl
 											<<"2-Medio\t\t\t+0,50"<<endl
-											<<"3-Piccolo\t\t+0,00"<<endl;
+											<<"3-Piccolo"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -301,7 +301,7 @@ int main(){
 										cout<<"Scegliere una salsa da aggiungere:"<<endl
 											<<"1-Maionese\t\t+0,10"<<endl
 											<<"2-Ketchup\t\t+0,10"<<endl
-											<<"3-Nessuna\t\t+0,00"<<endl;
+											<<"3-Nessuna"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -314,9 +314,9 @@ int main(){
 										break;
 									case 6:
 									cout<<"Scegliere la bibita:"<<endl
-											<<"1-Acqua\t\t\t+0,00"<<endl
-											<<"2-CocaCola\t\t+0,00"<<endl
-											<<"3-Sprite\t\t+0,00"<<endl;
+											<<"1-Acqua"<<endl
+											<<"2-CocaCola"<<endl
+											<<"3-Sprite"<<endl;
 										cout<<"=>";
 										cin>>scelta;
 										while(scelta<1 or scelta>3){
@@ -356,7 +356,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -470,7 +470,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;	
 						}
@@ -539,7 +539,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;	
 						}
@@ -614,7 +614,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -687,7 +687,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -787,7 +787,7 @@ int main(){
 						}else{
 							cout<<"Il tuo carrello è pieno!!!"<<endl
 								<<"Sarai reindirizzato al carrello dove portrai concludere l'ordine"<<endl;
-							cout<<"Premi enter per continuare..."<<endl;
+							cout<<"Premi un numero e poi enter per continuare..."<<endl;
 							cin>>scelta;
 							goto menuCarrello;
 						}
@@ -833,7 +833,7 @@ int main(){
 													sovrapprezzoItem+=2.9;												
 													break;
 												case 3:
-													cout<<"Piccolo\t\t+0.00"<<endl;
+													cout<<"Piccolo"<<endl;
 													break;
 											}
 											cout<<"\tContorno:\t";
@@ -847,13 +847,13 @@ int main(){
 													sovrapprezzoItem+=3.50;
 													break;
 												case 3:
-													cout<<"Nessuno\t\t+0.00"<<endl;
+													cout<<"Nessuno"<<endl;
 													break;
 											}
 											cout<<"\tBibita:\t\t";
 											switch(opzioniPiatti[i*3+2]){
 												case 1:
-													cout<<"Acqua\t\t+0.00"<<endl;
+													cout<<"Acqua"<<endl;
 													break;
 												case 2:
 													cout<<"CocaCola\t+2.00"<<endl;
@@ -877,7 +877,7 @@ int main(){
 													sovrapprezzoItem+=0.5;
 													break;
 												case 3:
-													cout<<"Piccolo\t\t+0.00"<<endl;
+													cout<<"Piccolo"<<endl;
 													break;
 											}
 											cout<<"\tSalsa: ";
@@ -891,7 +891,7 @@ int main(){
 													sovrapprezzoItem+=0.1;
 													break;
 												case 3:
-													cout<<"Nessuna\t\t+0.00"<<endl;
+													cout<<"Nessuna"<<endl;
 													break;
 											}
 											break;
@@ -905,7 +905,7 @@ int main(){
 													cout<<"CocaCola"<<endl;
 													break;
 												case 3:
-													cout<<"Piccolo"<<endl;
+													cout<<"Sprite"<<endl;
 													break;
 											}
 											break;
@@ -923,23 +923,23 @@ int main(){
 										cout<<"\tBase: ";
 										switch(opzioniPiatti[i*3]){
 											case 1:
-												cout<<"Riso bianco.\t\t+0.00"<<endl;
+												cout<<"Riso bianco."<<endl;
 												break;
 											case 2:
-												cout<<"Riso integrale\t\t+0.00"<<endl;
+												cout<<"Riso integrale"<<endl;
 												break;
 										}
 										cout<<"\tProteine: ";
 										switch(opzioniPiatti[i*3+1]){
 											case 1:
-												cout<<"Salmone\t\t+0.00";
+												cout<<"Salmone";
 												break;
 											case 2:
 												cout<<"Tonno\t\t\t+0.50";
 												sovrapprezzoItem+=0.50;
 												break;
 											case 3:
-												cout<<"Tofu Marinato\t\t+0.00";
+												cout<<"Tofu Marinato";
 												break;
 										}
 										cout<<endl;
@@ -950,10 +950,10 @@ int main(){
 												sovrapprezzoItem+=1;
 												break;
 											case 2:
-												cout<<"Cetriolo\t\t+0.00";
+												cout<<"Cetriolo";
 												break;
 											case 3:
-												cout<<"Carote\t\t\t+0.00";
+												cout<<"Carote";
 												break;
 										}
 										cout<<endl;
